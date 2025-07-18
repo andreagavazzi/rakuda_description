@@ -1,0 +1,473 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
+
+
+    <!-- This first link called "world" is empty -->
+    <link name="world"></link>
+
+
+    <link name="base_link">
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://rakuda_description/meshes/visual/base_link.stl" scale="1.0 1.0 1.0"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+
+    <link name="waist_link">
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://rakuda_description/meshes/visual/waist_link.stl" scale="1.0 1.0 1.0"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+
+    <!-- A simple fixed joint from our empty world link, to our base. -->
+    <!-- The base origin is offset from the world origin. -->
+    <joint name="base_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <parent link="world"/>
+        <child link="base_link"/>        
+    </joint>
+
+    <joint name="waist_joint" type="fixed">
+        <origin xyz="0 0 0.315" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="waist_link"/>        
+    </joint>
+
+
+    <link name="body_link">
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://rakuda_description/meshes/visual/body_link.stl" scale="1.0 1.0 1.0"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="body_joint" type="revolute">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <limit lower="-0.6" upper="0.6" effort="10" velocity="1.0"/>
+        <parent link="waist_link"/>
+        <child link="body_link"/>
+        <axis xyz="0 0 1"/>      
+    </joint>
+
+
+    <link name="l_link1">
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://rakuda_description/meshes/visual/l_link1.stl" scale="1.0 1.0 1.0"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+    
+    <joint name="l_link1_joint" type="revolute">
+        <origin xyz="0 0.0791 0.0826" rpy="0 0 0"/>
+        <limit lower="-0.6" upper="0.6" effort="10" velocity="1.0"/>
+        <parent link="body_link"/>
+        <child link="l_link1"/>
+        <axis xyz="0 1 0"/>      
+    </joint>
+
+
+    <link name="r_link1">
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://rakuda_description/meshes/visual/r_link1.stl" scale="1.0 1.0 1.0"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+    
+    <joint name="r_link1_joint" type="revolute">
+        <origin xyz="0 -0.0791 0.0826" rpy="0 0 0"/>
+        <limit lower="-0.6" upper="0.6" effort="10" velocity="1.0"/>
+        <parent link="body_link"/>
+        <child link="r_link1"/>
+        <axis xyz="0 -1 0"/>      
+    </joint>
+
+
+    <link name="l_link2">
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://rakuda_description/meshes/visual/l_link2.stl" scale="1.0 1.0 1.0"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+    
+    <joint name="l_link2_joint" type="revolute">
+        <origin xyz="0 0.0445 -0.024" rpy="0 0 0"/>
+        <limit lower="-0.6" upper="0.6" effort="10" velocity="1.0"/>
+        <parent link="l_link1"/>
+        <child link="l_link2"/>
+        <axis xyz="1 0 0"/>      
+    </joint>
+
+
+    <link name="r_link2">
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://rakuda_description/meshes/visual/r_link2.stl" scale="1.0 1.0 1.0"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+    
+    <joint name="r_link2_joint" type="revolute">
+        <origin xyz="0 -0.0445 -0.024" rpy="0 0 0"/>
+        <limit lower="-0.6" upper="0.6" effort="10" velocity="1.0"/>
+        <parent link="r_link1"/>
+        <child link="r_link2"/>
+        <axis xyz="-1 0 0"/>      
+    </joint>
+
+
+    <link name="l_link3">
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://rakuda_description/meshes/visual/l_link3.stl" scale="1.0 1.0 1.0"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+    
+    <joint name="l_link3_joint" type="revolute">
+        <origin xyz="0.012 0 -0.0787" rpy="0 0 0"/>
+        <limit lower="-0.6" upper="0.6" effort="10" velocity="1.0"/>
+        <parent link="l_link2"/>
+        <child link="l_link3"/>
+        <axis xyz="0 0 1"/>      
+    </joint>
+
+
+    <link name="r_link3">
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://rakuda_description/meshes/visual/r_link3.stl" scale="1.0 1.0 1.0"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+    
+    <joint name="r_link3_joint" type="revolute">
+        <origin xyz="0.012 0 -0.0787" rpy="0 0 0"/>
+        <limit lower="-0.6" upper="0.6" effort="10" velocity="1.0"/>
+        <parent link="r_link2"/>
+        <child link="r_link3"/>
+        <axis xyz="0 0 1"/>      
+    </joint>
+
+
+    <link name="l_link4">
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://rakuda_description/meshes/visual/l_link4.stl" scale="1.0 1.0 1.0"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+    
+    <joint name="l_link4_joint" type="revolute">
+        <origin xyz="0.024 0 -0.0215" rpy="0 0 0"/>
+        <limit lower="-0.6" upper="0.6" effort="10" velocity="1.0"/>
+        <parent link="l_link3"/>
+        <child link="l_link4"/>
+        <axis xyz="0 1 0"/>      
+    </joint>
+
+
+    <link name="r_link4">
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://rakuda_description/meshes/visual/r_link4.stl" scale="1.0 1.0 1.0"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+    
+    <joint name="r_link4_joint" type="revolute">
+        <origin xyz="0.024 0 -0.0215" rpy="0 0 0"/>
+        <limit lower="-0.6" upper="0.6" effort="10" velocity="1.0"/>
+        <parent link="r_link3"/>
+        <child link="r_link4"/>
+        <axis xyz="0 -1 0"/>      
+    </joint>
+
+
+    <link name="l_link5">
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://rakuda_description/meshes/visual/l_link5.stl" scale="1.0 1.0 1.0"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+    
+    <joint name="l_link5_joint" type="revolute">
+        <origin xyz="0 0 -0.062" rpy="0 0 0"/>
+        <limit lower="-0.6" upper="0.6" effort="10" velocity="1.0"/>
+        <parent link="l_link4"/>
+        <child link="l_link5"/>
+        <axis xyz="0 0 1"/>      
+    </joint>
+
+
+    <link name="r_link5">
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://rakuda_description/meshes/visual/r_link5.stl" scale="1.0 1.0 1.0"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+    
+    <joint name="r_link5_joint" type="revolute">
+        <origin xyz="0 0 -0.062" rpy="0 0 0"/>
+        <limit lower="-0.6" upper="0.6" effort="10" velocity="1.0"/>
+        <parent link="r_link4"/>
+        <child link="r_link5"/>
+        <axis xyz="0 0 1"/>      
+    </joint>
+
+
+    <link name="l_link6">
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://rakuda_description/meshes/visual/l_link6.stl" scale="1.0 1.0 1.0"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+    
+    <joint name="l_link6_joint" type="revolute">
+        <origin xyz="0 0 -0.0425" rpy="0 0 0"/>
+        <limit lower="-0.6" upper="0.6" effort="10" velocity="1.0"/>
+        <parent link="l_link5"/>
+        <child link="l_link6"/>
+        <axis xyz="0 1 0"/>      
+    </joint>
+
+
+    <link name="r_link6">
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://rakuda_description/meshes/visual/r_link6.stl" scale="1.0 1.0 1.0"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+    
+    <joint name="r_link6_joint" type="revolute">
+        <origin xyz="0 0 -0.0425" rpy="0 0 0"/>
+        <limit lower="-0.6" upper="0.6" effort="10" velocity="1.0"/>
+        <parent link="r_link5"/>
+        <child link="r_link6"/>
+        <axis xyz="0 -1 0"/>      
+    </joint>
+
+
+    <link name="neck1_link">
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://rakuda_description/meshes/visual/neck1_link.stl" scale="1.0 1.0 1.0"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+    
+    <joint name="neck1_joint" type="revolute">
+        <origin xyz="0 0 0.1187" rpy="0 0 0"/>
+        <limit lower="-0.6" upper="0.6" effort="10" velocity="1.0"/>
+        <parent link="body_link"/>
+        <child link="neck1_link"/>
+        <axis xyz="0 0 1"/>      
+    </joint>
+    
+    
+    <link name="neck2_link">
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://rakuda_description/meshes/visual/neck2_link.stl" scale="1.0 1.0 1.0"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+    
+    <joint name="neck2_joint" type="revolute">
+        <origin xyz="0 0 0.0299" rpy="0 0 0"/>
+        <limit lower="-0.6" upper="0.6" effort="10" velocity="1.0"/>
+        <parent link="neck1_link"/>
+        <child link="neck2_link"/>
+        <axis xyz="0 1 0"/>      
+    </joint>
+    
+    
+    <link name="l_gripper_a">
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://rakuda_description/meshes/visual/l_gripper_a.stl" scale="1.0 1.0 1.0"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+    
+    <joint name="l_gripper_joint" type="revolute">
+        <origin xyz="0 0.016 -0.0423" rpy="0 0 0"/>
+        <limit lower="-0.01" upper="1.0" effort="10" velocity="1.0"/>
+        <parent link="l_link6"/>
+        <child link="l_gripper_a"/>
+        <axis xyz="1 0 0"/>      
+    </joint>   
+   
+
+    <link name="l_gripper_b">
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://rakuda_description/meshes/visual/l_gripper_b.stl" scale="1.0 1.0 1.0"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+    
+    <joint name="l_gripper_b_joint" type="revolute">
+        <origin xyz="0 -0.008 -0.0423" rpy="0 0 0"/>
+        <limit lower="-0.01" upper="1.0" effort="10" velocity="1.0"/>
+        <parent link="l_link6"/>
+        <child link="l_gripper_b"/>
+        <axis xyz="1 0 0"/>
+        <mimic joint="l_gripper_joint" multiplier="-1" offset="0"/>      
+    </joint>    
+   
+    
+    
+    
+    <link name="r_gripper_a">
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://rakuda_description/meshes/visual/r_gripper_a.stl" scale="1.0 1.0 1.0"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+    
+    <joint name="r_gripper_joint" type="revolute">
+        <origin xyz="0 -0.016 -0.0423" rpy="0 0 0"/>
+        <limit lower="-1.0" upper="0.01" effort="10" velocity="1.0"/>
+        <parent link="r_link6"/>
+        <child link="r_gripper_a"/>
+        <axis xyz="1 0 0"/>      
+    </joint>   
+   
+
+    <link name="r_gripper_b">
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://rakuda_description/meshes/visual/r_gripper_b.stl" scale="1.0 1.0 1.0"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+    
+    <joint name="r_gripper_b_joint" type="revolute">
+        <origin xyz="0 0.008 -0.0423" rpy="0 0 0"/>
+        <limit lower="-1.0" upper="0.01" effort="10" velocity="1.0"/>
+        <parent link="r_link6"/>
+        <child link="r_gripper_b"/>
+        <axis xyz="1 0 0"/>
+        <mimic joint="r_gripper_joint" multiplier="-1" offset="0"/>      
+    </joint>
+    
+    
+
+    <!-- Camera links -->
+    
+    <link name="l_camera_link"/>
+
+    <joint name="l_camera_joint" type="fixed">
+        <origin xyz="0.08125 0.02324 0.0528" rpy="0 0 0"/>
+        <parent link="neck2_link"/>
+        <child link="l_camera_link"/>        
+    </joint>
+
+    <link name="r_camera_link"/>
+
+    <joint name="r_camera_joint" type="fixed">
+        <origin xyz="0.08125 -0.02324 0.0528" rpy="0 0 0"/>
+        <parent link="neck2_link"/>
+        <child link="r_camera_link"/>        
+    </joint>   
+    
+
+</robot>
