@@ -2,10 +2,11 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
 
 
-    <!-- This first link called "world" is empty -->
+<!-- World link -->
     <link name="world"></link>
 
 
+<!-- Support links -->
     <link name="base_link">
         <visual>
             <origin xyz="0 0 0.0" rpy="0 0 0"/>
@@ -17,7 +18,6 @@
             </material>
         </visual>
     </link>
-
 
     <link name="waist_link">
         <visual>
@@ -31,9 +31,6 @@
         </visual>
     </link>
 
-
-    <!-- A simple fixed joint from our empty world link, to our base. -->
-    <!-- The base origin is offset from the world origin. -->
     <joint name="base_joint" type="fixed">
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <parent link="world"/>
@@ -47,6 +44,7 @@
     </joint>
 
 
+<!-- Body link -->
     <link name="body_link">
         <visual>
             <origin xyz="0 0 0.0" rpy="0 0 0"/>
@@ -68,6 +66,7 @@
     </joint>
 
 
+<!-- Arm links -->
     <link name="l_link1">
         <visual>
             <origin xyz="0 0 0.0" rpy="0 0 0"/>
@@ -320,6 +319,7 @@
     </joint>
 
 
+<!-- Head link -->
     <link name="neck1_link">
         <visual>
             <origin xyz="0 0 0.0" rpy="0 0 0"/>
@@ -362,6 +362,7 @@
     </joint>
     
     
+<!-- Gripper links -->
     <link name="l_gripper_a">
         <visual>
             <origin xyz="0 0 0.0" rpy="0 0 0"/>
@@ -403,9 +404,7 @@
         <axis xyz="1 0 0"/>
         <mimic joint="l_gripper_joint" multiplier="-1" offset="0"/>      
     </joint>    
-   
-    
-    
+
     
     <link name="r_gripper_a">
         <visual>
@@ -449,10 +448,8 @@
         <mimic joint="r_gripper_joint" multiplier="-1" offset="0"/>      
     </joint>
     
-    
 
-    <!-- Camera links -->
-    
+<!-- Camera links -->
     <link name="l_camera_link"/>
 
     <joint name="l_camera_joint" type="fixed">
