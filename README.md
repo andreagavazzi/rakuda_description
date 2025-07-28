@@ -5,7 +5,11 @@ This package provides a URDF model of Rakuda | Echo in xacro format
 <img align="center" src="https://github.com/andreagavazzi/rakuda_description/blob/main/assets/rakuda_rviz.png"/>
 
 
-Here's a graphical representation of the description (click to see the PDF version):
+Here's a graphical representation of the description:
+
+<img align="center" src="https://github.com/andreagavazzi/rakuda_description/blob/main/assets/rakuda.png" width="400" />
+
+
 
 ### Coordinate frames
 **base_link** - Rigidly attached to the robot base. Provides an obvious point of reference for other links in the model. Located on the body attachment, in the central mounting hole, with the X axis facing forward like in the picture
@@ -17,3 +21,6 @@ Here's a graphical representation of the description (click to see the PDF versi
 ### Usage
 The package does not provide any functionality on its own. Rather, it is used by a variety of other components.
 For example, if you want to visualize the model in RViz.
+```
+ros2 launch  rakuda_description display.launch.py
+```
