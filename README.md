@@ -8,7 +8,7 @@ This package provides a URDF model of Rakuda | Echo in xacro format
 Here's a graphical representation of the description (click to see the PDF version):
 
 ### Coordinate frames
-**base_link** - Rigidly attached to the robot base. Provides an obvious point of reference for other links in the model. Located on the upper plane of the robot, in the central mounting hole, with the X axis facing forward like in the picture below:
+**base_link** - Rigidly attached to the robot base. Provides an obvious point of reference for other links in the model. Located on the body attachment, in the central mounting hole, with the X axis facing forward like in the picture
 
 **camera_frame** - Attached to the camera sensor. Represents the viewport of the camera and allows to express relative pose in the standard convention.
 
