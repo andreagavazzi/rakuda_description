@@ -2,7 +2,7 @@
 
 This package provides a URDF model of Rakuda | Echo in xacro format
 
-<img align="center" src="https://github.com/andreagavazzi/rakuda_description/blob/main/assets/rakuda_rviz.png"/>
+<img align="center" src="https://github.com/andreagavazzi/rakuda_description/blob/main/assets/Screenshot from 2025-09-17 10-03-23.png" width="800" />
 
 
 Here's a graphical representation of the description:
