@@ -21,7 +21,7 @@
   <collision>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/collision/base_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/base_link_collision.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -42,16 +42,12 @@
   <collision>
     <origin xyz="0.0 0.0 -0.302" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/waist_link_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/waist_link_collision.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-
-
-
-
-<link name="torso_link_1">
+<link name="torso_link">
   <inertial>
     <origin xyz="-0.005791332469439025 1.1532258378440722e-08 0.06653504643352193" rpy="0 0 0"/>
     <mass value="0.7540141547961345"/>
@@ -60,19 +56,19 @@
   <visual>
     <origin xyz="-0.0 -0.0 -0.3085" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/torso_link_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/torso_link_.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.0 -0.0 -0.3085" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/torso_link_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/torso_link_collision.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="neck_yaw_link_1">
+<link name="neck_yaw_link">
   <inertial>
     <origin xyz="2.8236692876973818e-15 -0.0003318177210791965 0.010126539608700469" rpy="0 0 0"/>
     <mass value="0.01399997346170466"/>
@@ -81,19 +77,19 @@
   <visual>
     <origin xyz="-0.0 -0.0 -0.43405" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/neck_yaw_link_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/neck_yaw_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.0 -0.0 -0.43405" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/neck_yaw_link_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/neck_yaw_link_collision.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="neck_pitch_link_1">
+<link name="neck_pitch_link">
   <inertial>
     <origin xyz="0.008434802102082811 -0.0003276428199875459 0.04341435318306919" rpy="0 0 0"/>
     <mass value="0.2822100615108845"/>
@@ -102,19 +98,19 @@
   <visual>
     <origin xyz="0.0 -0.0001 -0.4606" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/neck_pitch_link_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/neck_pitch_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0.0 -0.0001 -0.4606" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/neck_pitch_link_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/neck_pitch_link_collision.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="head_camera_link_1">
+<link name="head_camera_link">
   <inertial>
     <origin xyz="-0.0009302798678163388 -2.567747878634704e-07 0.0006112316563195441" rpy="0 0 0"/>
     <mass value="0.00038890961357324327"/>
@@ -123,23 +119,14 @@
   <visual>
     <origin xyz="-0.062346 0.000141 -0.494924" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/head_camera_link_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/head_camera_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
-  <collision>
-    <origin xyz="-0.062346 0.000141 -0.494924" rpy="0 0 0"/>
-    <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/head_camera_link_1.stl" scale="0.001 0.001 0.001"/>
-    </geometry>
-  </collision>
 </link>
 
 
-
-
-
-<link name="l_link1_1">
+<link name="l_link1">
   <inertial>
     <origin xyz="8.165392508629886e-05 0.017114007906281148 -0.01682274344663298" rpy="0 0 0"/>
     <mass value="0.07299177430140238"/>
@@ -148,19 +135,19 @@
   <visual>
     <origin xyz="-0.0 -0.0826 -0.3946" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/l_link1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/l_link1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.0 -0.0826 -0.3946" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/l_link1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/l_link1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="r_link1_1">
+<link name="r_link1">
   <inertial>
     <origin xyz="7.710992934052517e-05 -0.017114009124667 -0.016822741627550486" rpy="0 0 0"/>
     <mass value="0.07299176592385347"/>
@@ -169,19 +156,19 @@
   <visual>
     <origin xyz="-0.0 0.0826 -0.3946" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/r_link1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/r_link1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.0 0.0826 -0.3946" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/r_link1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/r_link1_collision.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="l_link2_1">
+<link name="l_link2">
   <inertial>
     <origin xyz="2.482738387163369e-05 0.000396191411047242 -0.03040144548272805" rpy="0 0 0"/>
     <mass value="0.2900252815965671"/>
@@ -190,19 +177,19 @@
   <visual>
     <origin xyz="-0.0 -0.1236 -0.3706" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/l_link2_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/l_link2.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.0 -0.1236 -0.3706" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/l_link2_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/l_link2_collision.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="r_link2_1">
+<link name="r_link2">
   <inertial>
     <origin xyz="2.4825375508370262e-05 -0.0003961910521785711 -0.030401438771675282" rpy="0 0 0"/>
     <mass value="0.2900253610511383"/>
@@ -211,19 +198,19 @@
   <visual>
     <origin xyz="-0.0 0.1236 -0.3706" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/r_link2_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/r_link2.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.0 0.1236 -0.3706" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/r_link2_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/r_link2_collision.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="l_link3_1">
+<link name="l_link3">
   <inertial>
     <origin xyz="0.012816931345662554 0.0004977011098152018 -0.019558162431457693" rpy="0 0 0"/>
     <mass value="0.10799652996016351"/>
@@ -232,19 +219,19 @@
   <visual>
     <origin xyz="-0.012 -0.1236 -0.2884" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/l_link3_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/l_link3.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.012 -0.1236 -0.2884" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/l_link3_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/l_link3_collision.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="r_link3_1">
+<link name="r_link3">
   <inertial>
     <origin xyz="0.01281693134567282 -0.0004977011098376977 -0.019558162431519532" rpy="0 0 0"/>
     <mass value="0.10799652996026934"/>
@@ -253,19 +240,19 @@
   <visual>
     <origin xyz="-0.012 0.1236 -0.2884" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/r_link3_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/r_link3.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.012 0.1236 -0.2884" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/r_link3_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/r_link3_collision.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="l_link4_1">
+<link name="l_link4">
   <inertial>
     <origin xyz="-0.013529205112779118 0.001169548907603693 -0.04421637055831898" rpy="0 0 0"/>
     <mass value="0.10699509679197633"/>
@@ -274,19 +261,19 @@
   <visual>
     <origin xyz="-0.036 -0.1236 -0.27035" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/l_link4_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/l_link4.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.036 -0.1236 -0.27035" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/l_link4_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/l_link4_collision.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="r_link4_1">
+<link name="r_link4">
   <inertial>
     <origin xyz="-0.013529205589267821 -0.0011695493323802958 -0.04421637085671126" rpy="0 0 0"/>
     <mass value="0.10699509934326328"/>
@@ -295,19 +282,19 @@
   <visual>
     <origin xyz="-0.036 0.1236 -0.27035" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/r_link4_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/r_link4.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.036 0.1236 -0.27035" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/r_link4_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/r_link4_collision.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="l_link5_1">
+<link name="l_link5">
   <inertial>
     <origin xyz="-0.00010745262237027431 0.0004983218880769968 -0.02809682280934908" rpy="0 0 0"/>
     <mass value="0.10899653712889695"/>
@@ -316,19 +303,19 @@
   <visual>
     <origin xyz="-0.036 -0.1236 -0.2049" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/l_link5_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/l_link5.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.036 -0.1236 -0.2049" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/l_link5_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/l_link5_collision.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="r_link5_1">
+<link name="r_link5">
   <inertial>
     <origin xyz="-0.00010749374651377458 -0.00049827898943898 -0.02809678801928564" rpy="0 0 0"/>
     <mass value="0.10899673027569862"/>
@@ -337,19 +324,19 @@
   <visual>
     <origin xyz="-0.036 0.1236 -0.2049" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/r_link5_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/r_link5.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.036 0.1236 -0.2049" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/r_link5_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/r_link5.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="r_link6_1">
+<link name="r_link6">
   <inertial>
     <origin xyz="0.0004978784895699889 -0.003188942119494928 -0.03994743914308038" rpy="0 0 0"/>
     <mass value="0.07399870180333049"/>
@@ -358,19 +345,19 @@
   <visual>
     <origin xyz="-0.036 0.1236 -0.16585" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/r_link6_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/r_link6.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.036 0.1236 -0.16585" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/r_link6_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/r_link6_collision.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="l_link6_1">
+<link name="l_link6">
   <inertial>
     <origin xyz="0.000497878489597231 0.00318894211964936 -0.03994743914314852" rpy="0 0 0"/>
     <mass value="0.07399870180299768"/>
@@ -379,19 +366,19 @@
   <visual>
     <origin xyz="-0.036 -0.1236 -0.16585" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/l_link6_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/l_link6.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.036 -0.1236 -0.16585" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/l_link6_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/l_link6_collision.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="r_gripper_a_1">
+<link name="r_gripper_a">
   <inertial>
     <origin xyz="-8.852479904033345e-05 -0.003089211052713342 -0.02999149965192692" rpy="0 0 0"/>
     <mass value="0.017998423512260126"/>
@@ -400,19 +387,19 @@
   <visual>
     <origin xyz="-0.036 0.1396 -0.1236" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/r_gripper_a_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/r_gripper_a.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.036 0.1396 -0.1236" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/r_gripper_a_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/r_gripper_a_collision.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="r_gripper_b_1">
+<link name="r_gripper_b">
   <inertial>
     <origin xyz="-0.025089405701819327 0.003104658168288782 -0.030279426009768864" rpy="0 0 0"/>
     <mass value="0.018999892317782645"/>
@@ -421,19 +408,19 @@
   <visual>
     <origin xyz="-0.061 0.1156 -0.12355" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/r_gripper_b_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/r_gripper_b.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.061 0.1156 -0.12355" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/r_gripper_b_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/r_gripper_b_collision.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="l_gripper_a_1">
+<link name="l_gripper_a">
   <inertial>
     <origin xyz="-8.920360655783471e-05 0.003089714518583392 -0.029990508331487045" rpy="0 0 0"/>
     <mass value="0.017997801931831644"/>
@@ -442,19 +429,19 @@
   <visual>
     <origin xyz="-0.036 -0.1396 -0.1236" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/l_gripper_a_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/l_gripper_a.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.036 -0.1396 -0.1236" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/l_gripper_a_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/l_gripper_a.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="l_gripper_b_1">
+<link name="l_gripper_b">
   <inertial>
     <origin xyz="-0.02508868291206493 -0.0031035251440137968 -0.030280490115251982" rpy="0 0 0"/>
     <mass value="0.019000550359800868"/>
@@ -463,178 +450,180 @@
   <visual>
     <origin xyz="-0.061 -0.1156 -0.12355" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/l_gripper_b_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/l_gripper_b.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.061 -0.1156 -0.12355" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/l_gripper_b_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/l_gripper_b.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
+
+
 <joint name="base_waist_joint" type="fixed">
   <origin xyz="0.0 0.0 0.302" rpy="0 0 0"/>
   <parent link="base_link"/>
-  <child link="waist_link_1"/>
+  <child link="waist_link"/>
 </joint>
 
 <joint name="waist_yaw_joint" type="revolute">
   <origin xyz="0.0 0.0 0.0065" rpy="0 0 0"/>
-  <parent link="waist_link_1"/>
-  <child link="torso_link_1"/>
+  <parent link="waist_link"/>
+  <child link="torso_link"/>
   <axis xyz="0.0 0.0 -1.0"/>
   <limit upper="1.396263" lower="-1.396263" effort="100" velocity="100"/>
 </joint>
 
 <joint name="neck_yaw_joint" type="revolute">
   <origin xyz="0.0 0.0 0.12555" rpy="0 0 0"/>
-  <parent link="torso_link_1"/>
-  <child link="neck_yaw_link_1"/>
+  <parent link="torso_link"/>
+  <child link="neck_yaw_link"/>
   <axis xyz="0.0 0.0 1.0"/>
   <limit upper="1.22173" lower="-1.22173" effort="100" velocity="100"/>
 </joint>
 
 <joint name="neck_pitch_join" type="revolute">
   <origin xyz="-0.0 0.0001 0.02655" rpy="0 0 0"/>
-  <parent link="neck_yaw_link_1"/>
-  <child link="neck_pitch_link_1"/>
+  <parent link="neck_yaw_link"/>
+  <child link="neck_pitch_link"/>
   <axis xyz="0.0 -1.0 0.0"/>
   <limit upper="0.610865" lower="-0.872665" effort="100" velocity="100"/>
 </joint>
 
 <joint name="head_camera_joint" type="fixed">
   <origin xyz="0.062346 -0.000241 0.034324" rpy="0 0 0"/>
-  <parent link="neck_pitch_link_1"/>
-  <child link="head_camera_link_1"/>
+  <parent link="neck_pitch_link"/>
+  <child link="head_camera_link"/>
 </joint>
 
 <joint name="l_arm_joint1" type="revolute">
   <origin xyz="0.0 0.0826 0.0861" rpy="0 0 0"/>
-  <parent link="torso_link_1"/>
-  <child link="l_link1_1"/>
+  <parent link="torso_link"/>
+  <child link="l_link1"/>
   <axis xyz="0.0 1.0 0.0"/>
   <limit upper="0.0" lower="-2.96706" effort="100" velocity="100"/>
 </joint>
 
 <joint name="r_arm_joint1" type="revolute">
   <origin xyz="0.0 -0.0826 0.0861" rpy="0 0 0"/>
-  <parent link="torso_link_1"/>
-  <child link="r_link1_1"/>
+  <parent link="torso_link"/>
+  <child link="r_link1"/>
   <axis xyz="0.0 -1.0 0.0"/>
   <limit upper="2.96706" lower="0.0" effort="100" velocity="100"/>
 </joint>
 
 <joint name="l_arm_joint2" type="revolute">
   <origin xyz="0.0 0.041 -0.024" rpy="0 0 0"/>
-  <parent link="l_link1_1"/>
-  <child link="l_link2_1"/>
+  <parent link="l_link1"/>
+  <child link="l_link2"/>
   <axis xyz="1.0 0.0 0.0"/>
   <limit upper="1.570796" lower="-0.0" effort="100" velocity="100"/>
 </joint>
 
 <joint name="r_arm_joint2" type="revolute">
   <origin xyz="0.0 -0.041 -0.024" rpy="0 0 0"/>
-  <parent link="r_link1_1"/>
-  <child link="r_link2_1"/>
+  <parent link="r_link1"/>
+  <child link="r_link2"/>
   <axis xyz="1.0 0.0 0.0"/>
   <limit upper="0.0" lower="-1.570796" effort="100" velocity="100"/>
 </joint>
 
 <joint name="l_arm_joint3" type="revolute">
   <origin xyz="0.012 0.0 -0.0822" rpy="0 0 0"/>
-  <parent link="l_link2_1"/>
-  <child link="l_link3_1"/>
+  <parent link="l_link2"/>
+  <child link="l_link3"/>
   <axis xyz="0.0 0.0 -1.0"/>
   <limit upper="1.396263" lower="-1.396263" effort="100" velocity="100"/>
 </joint>
 
 <joint name="r_arm_joint3" type="revolute">
   <origin xyz="0.012 0.0 -0.0822" rpy="0 0 0"/>
-  <parent link="r_link2_1"/>
-  <child link="r_link3_1"/>
+  <parent link="r_link2"/>
+  <child link="r_link3"/>
   <axis xyz="0.0 0.0 -1.0"/>
   <limit upper="1.396263" lower="-1.396263" effort="100" velocity="100"/>
 </joint>
 
 <joint name="l_arm_joint4" type="revolute">
   <origin xyz="0.024 0.0 -0.01805" rpy="0 0 0"/>
-  <parent link="l_link3_1"/>
-  <child link="l_link4_1"/>
+  <parent link="l_link3"/>
+  <child link="l_link4"/>
   <axis xyz="0.0 1.0 0.0"/>
   <limit upper="0.174533" lower="-2.356194" effort="100" velocity="100"/>
 </joint>
 
 <joint name="r_arm_joint4" type="revolute">
   <origin xyz="0.024 0.0 -0.01805" rpy="0 0 0"/>
-  <parent link="r_link3_1"/>
-  <child link="r_link4_1"/>
+  <parent link="r_link3"/>
+  <child link="r_link4"/>
   <axis xyz="0.0 -1.0 0.0"/>
   <limit upper="2.356194" lower="-0.174533" effort="100" velocity="100"/>
 </joint>
 
 <joint name="l_arm_joint5" type="revolute">
   <origin xyz="0.0 0.0 -0.06545" rpy="0 0 0"/>
-  <parent link="l_link4_1"/>
-  <child link="l_link5_1"/>
+  <parent link="l_link4"/>
+  <child link="l_link5"/>
   <axis xyz="0.0 0.0 -1.0"/>
   <limit upper="1.570796" lower="-1.570796" effort="100" velocity="100"/>
 </joint>
 
 <joint name="r_arm_joint5" type="revolute">
   <origin xyz="0.0 0.0 -0.06545" rpy="0 0 0"/>
-  <parent link="r_link4_1"/>
-  <child link="r_link5_1"/>
+  <parent link="r_link4"/>
+  <child link="r_link5"/>
   <axis xyz="0.0 0.0 -1.0"/>
   <limit upper="1.570796" lower="-1.570796" effort="100" velocity="100"/>
 </joint>
 
 <joint name="r_arm_joint6" type="revolute">
   <origin xyz="0.0 0.0 -0.03905" rpy="0 0 0"/>
-  <parent link="r_link5_1"/>
-  <child link="r_link6_1"/>
+  <parent link="r_link5"/>
+  <child link="r_link6"/>
   <axis xyz="0.0 -1.0 0.0"/>
   <limit upper="1.396263" lower="-1.396263" effort="100" velocity="100"/>
 </joint>
 
 <joint name="l_arm_joint6" type="revolute">
   <origin xyz="0.0 0.0 -0.03905" rpy="0 0 0"/>
-  <parent link="l_link5_1"/>
-  <child link="l_link6_1"/>
+  <parent link="l_link5"/>
+  <child link="l_link6"/>
   <axis xyz="0.0 1.0 0.0"/>
   <limit upper="1.396263" lower="-1.396263" effort="100" velocity="100"/>
 </joint>
 
 <joint name="r_gripper_joint" type="revolute">
   <origin xyz="0.0 -0.016 -0.04225" rpy="0 0 0"/>
-  <parent link="r_link6_1"/>
-  <child link="r_gripper_a_1"/>
+  <parent link="r_link6"/>
+  <child link="r_gripper_a"/>
   <axis xyz="1.0 0.0 0.0"/>
   <limit upper="0.0" lower="-1.22173" effort="100" velocity="100"/>
 </joint>
 
 <joint name="r_gripper_mimic_joint" type="revolute">
   <origin xyz="0.025 0.008 -0.0423" rpy="0 0 0"/>
-  <parent link="r_link6_1"/>
-  <child link="r_gripper_b_1"/>
+  <parent link="r_link6"/>
+  <child link="r_gripper_b"/>
   <axis xyz="1.0 -4.8e-05 -0.0"/>
   <limit upper="1.22173" lower="0.0" effort="100" velocity="100"/>
 </joint>
 
 <joint name="l_gripper_joint" type="revolute">
   <origin xyz="0.0 0.016 -0.04225" rpy="0 0 0"/>
-  <parent link="l_link6_1"/>
-  <child link="l_gripper_a_1"/>
+  <parent link="l_link6"/>
+  <child link="l_gripper_a"/>
   <axis xyz="1.0 0.0 0.0"/>
   <limit upper="1.22173" lower="0.0" effort="100" velocity="100"/>
 </joint>
 
 <joint name="l_gripper_mimic_joint" type="revolute">
   <origin xyz="0.025 -0.008 -0.0423" rpy="0 0 0"/>
-  <parent link="l_link6_1"/>
-  <child link="l_gripper_b_1"/>
+  <parent link="l_link6"/>
+  <child link="l_gripper_b"/>
   <axis xyz="1.0 4.8e-05 -0.0"/>
   <limit upper="0.0" lower="-1.22173" effort="100" velocity="100"/>
 </joint>
