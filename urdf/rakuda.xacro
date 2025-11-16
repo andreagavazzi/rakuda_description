@@ -609,8 +609,8 @@
   <origin xyz="0.025 0.008 -0.0423" rpy="0 0 0"/>
   <parent link="r_link6"/>
   <child link="r_gripper_b"/>
-  <axis xyz="1.0 -4.8e-05 -0.0"/>
-  <limit upper="1.22173" lower="0.0" effort="100" velocity="100"/>
+  <axis xyz="1.0 0.0 0.0"/>
+  <mimic joint="r_gripper_joint" multiplier="-1.0" offset="0.0"/>
 </joint>
 
 <joint name="l_gripper_joint" type="revolute">
@@ -625,8 +625,8 @@
   <origin xyz="0.025 -0.008 -0.0423" rpy="0 0 0"/>
   <parent link="l_link6"/>
   <child link="l_gripper_b"/>
-  <axis xyz="1.0 4.8e-05 -0.0"/>
-  <limit upper="0.0" lower="-1.22173" effort="100" velocity="100"/>
+  <axis xyz="1.0 0.0 0.0"/>
+  <mimic joint="l_gripper_joint" multiplier="-1.0" offset="0.0"/>
 </joint>
 
 </robot>
