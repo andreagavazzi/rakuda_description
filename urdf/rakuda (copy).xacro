@@ -7,7 +7,6 @@
 <xacro:include filename="$(find rakuda_description)/urdf/gemini_335_336.urdf.xacro" />
 
 
-
 <!-- Used for fixing robot 'base_link'  to Gazebo 'world' -->
 <link name="world"/>
 
@@ -122,12 +121,21 @@
   </collision>
 </link>
 
-
-
-<xacro:gemini_335_336 parent_link="neck_pitch_link" />
-
-
-
+<link name="head_camera_link">
+<!-- TODO: replace this mass and inertial with official Orbbec camera URDF values -->
+  <inertial>
+    <origin xyz="-0.0009302798678163388 -2.567747878634704e-07 0.0006112316563195441" rpy="0 0 0"/>
+    <mass value="0.00038890961357324327"/>
+    <inertia ixx="0" iyy="0" izz="0" ixy="0" iyz="0" ixz="0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.062346 0.000141 -0.494924" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find rakuda_description)/meshes/visual/head_camera_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="white"/>
+  </visual>
+</link>
 
 
 
@@ -497,6 +505,12 @@
   <child link="neck_pitch_link"/>
   <axis xyz="0.0 -1.0 0.0"/>
   <limit upper="0.610865" lower="-0.872665" effort="100" velocity="100"/>
+</joint>
+
+<joint name="head_camera_joint" type="fixed">
+  <origin xyz="0.062346 -0.000241 0.034324" rpy="0 0 0"/>
+  <parent link="neck_pitch_link"/>
+  <child link="head_camera_link"/>
 </joint>
 
 <joint name="l_arm_joint1" type="revolute">
