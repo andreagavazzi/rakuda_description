@@ -402,19 +402,19 @@
 
 <link name="r_gripper_b">
   <inertial>
-    <origin xyz="-0.025089405701819327 0.003104658168288782 -0.030279426009768864" rpy="0 0 0"/>
+    <origin xyz="-8.852479904033345e-05 0.003104658168288782 -0.030279426009768864" rpy="0 0 0"/>
     <mass value="0.018999892317782645"/>
     <inertia ixx="6e-06" iyy="10e-06" izz="5e-06" ixy="0" iyz="0" ixz="0"/>
   </inertial>
   <visual>
-    <origin xyz="-0.061 0.1156 -0.12355" rpy="0 0 0"/>
+    <origin xyz="-0.036 0.1156 -0.12355" rpy="0 0 0"/>
     <geometry>
       <mesh filename="file://$(find rakuda_description)/meshes/visual/r_gripper_b.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="-0.061 0.1156 -0.12355" rpy="0 0 0"/>
+    <origin xyz="-0.036 0.1156 -0.12355" rpy="0 0 0"/>
     <geometry>
       <mesh filename="file://$(find rakuda_description)/meshes/collision/r_gripper_b_collision.stl" scale="0.001 0.001 0.001"/>
     </geometry>
@@ -444,19 +444,19 @@
 
 <link name="l_gripper_b">
   <inertial>
-    <origin xyz="-0.02508868291206493 -0.0031035251440137968 -0.030280490115251982" rpy="0 0 0"/>
+    <origin xyz="-8.920360655783471e-05 -0.0031035251440137968 -0.030280490115251982" rpy="0 0 0"/>
     <mass value="0.019000550359800868"/>
     <inertia ixx="6e-06" iyy="10e-06" izz="5e-06" ixy="0" iyz="0" ixz="0"/>
   </inertial>
   <visual>
-    <origin xyz="-0.061 -0.1156 -0.12355" rpy="0 0 0"/>
+    <origin xyz="-0.036 -0.1156 -0.12355" rpy="0 0 0"/>
     <geometry>
       <mesh filename="file://$(find rakuda_description)/meshes/visual/l_gripper_b.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="-0.061 -0.1156 -0.12355" rpy="0 0 0"/>
+    <origin xyz="-0.036 -0.1156 -0.12355" rpy="0 0 0"/>
     <geometry>
       <mesh filename="file://$(find rakuda_description)/meshes/collision/l_gripper_b_collision.stl" scale="0.001 0.001 0.001"/>
     </geometry>
@@ -606,7 +606,7 @@
 </joint>
 
 <joint name="r_gripper_mimic_joint" type="revolute">
-  <origin xyz="0.025 0.008 -0.0423" rpy="0 0 0"/>
+  <origin xyz="0.0 0.008 -0.0423" rpy="0 0 0"/>
   <limit lower="-1.0" upper="0.01" effort="10" velocity="1.0"/>
   <parent link="r_link6"/>
   <child link="r_gripper_b"/>
@@ -623,7 +623,7 @@
 </joint>
 
 <joint name="l_gripper_mimic_joint" type="revolute">
-  <origin xyz="0.025 -0.008 -0.0423" rpy="0 0 0"/>
+  <origin xyz="0.0 -0.008 -0.0423" rpy="0 0 0"/>
   <limit lower="-0.01" upper="1.0" effort="10" velocity="1.0"/>
   <parent link="l_link6"/>
   <child link="l_gripper_b"/>
