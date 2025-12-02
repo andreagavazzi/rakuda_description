@@ -122,15 +122,10 @@
   </collision>
 </link>
 
-
-
+<!-- Chiama la macro che aggancia la Orbbec -->
 <xacro:gemini_335_336 parent_link="neck_pitch_link" />
 
-
-
-
-
-
+<!-- Link braccia -->
 <link name="l_link1">
   <inertial>
     <origin xyz="8.165392508629886e-05 0.017114007906281148 -0.01682274344663298" rpy="0 0 0"/>

@@ -4,9 +4,8 @@
   <!-- proprietà per i mesh -->
   <xacro:property name="mesh_path" value="package://orbbec_description/meshes/gemini335_336/" />
 
-  <!-- macro che istanzia il Gemini e lo attacca a un parent -->
+  <!-- macro che istanzia la Orbbec e la attacca al parent -->
   <xacro:macro name="gemini_335_336" params="parent_link">
-
 
     <link name="camera_link">
         <inertial>
@@ -17,7 +16,7 @@
                 iyy="1.70686808598814E-06" iyz="-7.18717290327325E-09" izz="1.31766831843134E-05" />
         </inertial>
         <visual>
-            <origin xyz="-0.01587 -0.025 -0.0125" rpy="0 0 0" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
                 <mesh filename="${mesh_path}camera_link.STL" />
             </geometry>
@@ -59,9 +58,9 @@
     </link>
 
     <joint name="camera_bottom_screw_frame_joint" type="fixed">
-        <origin xyz="0.01587 0.025 0.0125" rpy="0 0 0" />
-        <parent link="camera_bottom_screw_frame" />
-        <child link="camera_link" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <parent link="camera_link" />
+        <child link="camera_bottom_screw_frame" />
         <axis xyz="0 0 0" />
     </joint>
 
@@ -92,8 +91,8 @@
     </link>
 
     <joint name="camera_left_ir_joint" type="fixed">
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <parent link="camera_depth_frame" />
+        <origin xyz="0.01587 -0.025 0.0125" rpy="0 0 0" />
+        <parent link="camera_bottom_screw_frame" />
         <child link="camera_left_ir_frame" />
         <axis xyz="0 0 0" />
     </joint>
@@ -124,8 +123,8 @@
     </link>
 
     <joint name="camera_left_ir_optical_joint" type="fixed">
-        <origin xyz="0 0 0" rpy="-1.5707963267949 0 -1.5707963267949" />
-        <parent link="camera_left_ir_frame" />
+        <origin xyz="0.01587 -0.025 0.0125" rpy="-1.5707963267949 0 -1.5707963267949" />
+        <parent link="camera_bottom_screw_frame" />
         <child link="camera_left_ir_optical_frame" />
         <axis xyz="0 0 0" />
     </joint>
@@ -157,8 +156,8 @@
     </link>
 
     <joint name="camera_right_ir_joint" type="fixed">
-        <origin xyz="0 -0.05 0" rpy="0 0 0" />
-        <parent link="camera_depth_frame" />
+        <origin xyz="0.01587 0.025 0.0125" rpy="0 0 0" />
+        <parent link="camera_bottom_screw_frame" />
         <child link="camera_right_ir_frame" />
         <axis xyz="0 0 0" />
     </joint>
@@ -189,8 +188,8 @@
     </link>
 
     <joint name="camera_right_ir_optical_joint" type="fixed">
-        <origin xyz="0 0 0" rpy="-1.5707963267949 0 -1.5707963267949" />
-        <parent link="camera_right_ir_frame" />
+        <origin xyz="0.01587 0.025 0.0125" rpy="-1.5707963267949 0 -1.5707963267949" />
+        <parent link="camera_bottom_screw_frame" />
         <child link="camera_right_ir_optical_frame" />
         <axis xyz="0 0 0" />
     </joint>
@@ -222,8 +221,8 @@
     </link>
 
     <joint name="camera_color_joint" type="fixed">
-        <origin xyz="0.001663 -0.014005 0.000005" rpy="0 0 0" />
-        <parent link="camera_depth_frame" />
+        <origin xyz="0.017533 0.010995 0.012505" rpy="0 0 0" />
+        <parent link="camera_bottom_screw_frame" />
         <child link="camera_color_frame" />
         <axis xyz="0 0 0" />
     </joint>
@@ -255,8 +254,8 @@
     </link>
 
     <joint name="camera_color_optical_joint" type="fixed">
-        <origin xyz="0 0 0" rpy="-1.5707963267949 0 -1.5707963267949" />
-        <parent link="camera_color_frame" />
+        <origin xyz="0.017533 0.010995 0.012505" rpy="-1.5707963267949 0 -1.5707963267949" />
+        <parent link="camera_bottom_screw_frame" />
         <child link="camera_color_optical_frame" />
         <axis xyz="0 0 0" />
     </joint>
@@ -288,8 +287,8 @@
     </link>
 
     <joint name="camera_depth_joint" type="fixed">
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <parent link="camera_link" />
+        <origin xyz="0.01587 -0.025 0.0125" rpy="0 0 0" />
+        <parent link="camera_bottom_screw_frame" />
         <child link="camera_depth_frame" />
         <axis xyz="0 0 0" />
     </joint>
@@ -319,21 +318,19 @@
     </link>
 
     <joint name="camera_depth_optical_joint" type="fixed">
-        <origin xyz="0 0 0" rpy="-1.5707963267949 0 -1.5707963267949" />
-        <parent link="camera_depth_frame" />
+        <origin xyz="0.01587 -0.025 0.0125" rpy="-1.5707963267949 0 -1.5707963267949" />
+        <parent link="camera_bottom_screw_frame" />
         <child link="camera_depth_optical_frame" />
         <axis xyz="0 0 0" />
     </joint>
 
 
-
-
-    <!-- Alla fine aggiungi il joint che collega il Gemini alla testa -->
+    <!-- Joint che collega la Orbbec alla testa -->
     <joint name="head_camera_joint" type="fixed">
-      <!-- usa gli offset che avevi nel tuo URDF per la camera finta -->
-      <origin xyz="0.062346 -0.000241 0.034324" rpy="0 0 0"/>
-      <parent link="${parent_link}"/>
-      <child link="camera_bottom_screw_frame"/>
+        <!-- Offset della dummy camera - placeholder stilizzato in Fusion -->
+        <origin xyz="0.062346 -0.000241 0.034324" rpy="0 0 0"/>
+        <parent link="${parent_link}"/>
+        <child link="camera_link"/>
     </joint>
 
   </xacro:macro>
