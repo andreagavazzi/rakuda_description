@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="gemini_335_336">
 
-  <!-- proprietà per i mesh -->
+  <!-- path per i mesh -->
   <xacro:property name="mesh_path" value="package://orbbec_description/meshes/gemini335_336/" />
 
   <!-- macro che istanzia la Orbbec e la attacca al parent -->
