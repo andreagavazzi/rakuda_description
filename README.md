@@ -6,7 +6,7 @@ The package is designed as the single source of truth for the mechanical structu
 
 Requires package OrbbecSDK_ROS2
 
-<img src="https://github.com/andreagavazzi/rakuda_description/blob/main/rviz.png" alt="ag_logo" width="400"/>
+<img src="https://github.com/andreagavazzi/rakuda_description/blob/main/rviz.png" alt="rviz" width="800"/>
 
 **Developments**  
 
