@@ -103,11 +103,11 @@ ros2 launch rakuda_description display.launch.py gui:=false
 
 Ongoing and planned improvements:
 
-- Refine **mass values** from the latest CAD models
-- Improve **inertial tensors** based on accurate CAD exports
-- Replace temporary shapes with optimized **collision meshes**
-- Add additional sensor options and mounting configurations
-- Provide example simulation setups (Gazebo / other simulators)
+- [x] Refine **mass values** from the latest CAD models
+- [x] Improve **inertial tensors** based on accurate CAD exports
+- [x] Replace temporary shapes with optimized **collision meshes**
+- [ ] Add additional sensor options and mounting configurations
+- [ ] Provide example simulation setups (Gazebo / other simulators)
 
 ---
 
