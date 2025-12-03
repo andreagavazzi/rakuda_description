@@ -6,10 +6,18 @@ The package is designed as the single source of truth for the mechanical structu
 
 Requires package OrbbecSDK_ROS2
 
-# rakuda_description
+<img src="https://github.com/andreagavazzi/rakuda_description/blob/main/rviz.png" alt="ag_logo" width="400"/>
 
-Clone and build
+**Developments**  
 
+- [x] Mass values
+- [x] Inertial values
+- [x] Collision meshes
+
+
+## Install
+
+```
 colcon build --packages-select rakuda_description
 ros2 launch rakuda_description display.launch.py
-
+```
