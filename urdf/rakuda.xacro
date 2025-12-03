@@ -7,8 +7,7 @@
 <xacro:include filename="$(find rakuda_description)/urdf/gemini_335_336.urdf.xacro" />
 
 
-
-<!-- Used for fixing robot 'base_link'  to Gazebo 'world' -->
+<!-- 'base_link'  to Gazebo 'world' -->
 <link name="world"/>
 
 <joint name="base_link_to_world_joint" type="fixed">
@@ -16,6 +15,7 @@
   <child link="base_link"/>
 </joint>
 
+<!-- Main links -->
 
 <link name="base_link">
   <inertial>
@@ -122,8 +122,10 @@
   </collision>
 </link>
 
+
 <!-- Chiama la macro che aggancia la Orbbec -->
 <xacro:gemini_335_336 parent_link="neck_pitch_link" />
+
 
 <!-- Link braccia -->
 <link name="l_link1">
@@ -463,6 +465,7 @@
 </link>
 
 
+<!-- Joints -->
 
 <joint name="base_waist_joint" type="fixed">
   <origin xyz="0.0 0.0 0.302" rpy="0 0 0"/>
