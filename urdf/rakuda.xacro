@@ -479,6 +479,7 @@
   <child link="torso_link"/>
   <axis xyz="0.0 0.0 -1.0"/>
   <limit upper="1.396263" lower="-1.396263" effort="100" velocity="100"/>
+  <dynamics damping="1.0e-6" friction="0.8"/>
 </joint>
 
 <joint name="neck_yaw_joint" type="revolute">
@@ -487,6 +488,7 @@
   <child link="neck_yaw_link"/>
   <axis xyz="0.0 0.0 1.0"/>
   <limit upper="1.22173" lower="-1.22173" effort="100" velocity="100"/>
+  <dynamics damping="1.0e-6" friction="0.8"/>
 </joint>
 
 <joint name="neck_pitch_joint" type="revolute">
@@ -495,6 +497,7 @@
   <child link="neck_pitch_link"/>
   <axis xyz="0.0 -1.0 0.0"/>
   <limit upper="0.610865" lower="-0.872665" effort="100" velocity="100"/>
+  <dynamics damping="1.0e-6" friction="0.8"/>
 </joint>
 
 <joint name="l_arm_joint1" type="revolute">
@@ -503,6 +506,7 @@
   <child link="l_link1"/>
   <axis xyz="0.0 1.0 0.0"/>
   <limit upper="0.0" lower="-2.96706" effort="100" velocity="100"/>
+  <dynamics damping="1.0e-6" friction="0.8"/>
 </joint>
 
 <joint name="r_arm_joint1" type="revolute">
@@ -511,6 +515,7 @@
   <child link="r_link1"/>
   <axis xyz="0.0 -1.0 0.0"/>
   <limit upper="2.96706" lower="0.0" effort="100" velocity="100"/>
+  <dynamics damping="1.0e-6" friction="0.8"/>
 </joint>
 
 <joint name="l_arm_joint2" type="revolute">
@@ -519,6 +524,7 @@
   <child link="l_link2"/>
   <axis xyz="1.0 0.0 0.0"/>
   <limit upper="1.570796" lower="-0.0" effort="100" velocity="100"/>
+  <dynamics damping="1.0e-6" friction="0.8"/>
 </joint>
 
 <joint name="r_arm_joint2" type="revolute">
@@ -527,6 +533,7 @@
   <child link="r_link2"/>
   <axis xyz="1.0 0.0 0.0"/>
   <limit upper="0.0" lower="-1.570796" effort="100" velocity="100"/>
+  <dynamics damping="1.0e-6" friction="0.8"/>
 </joint>
 
 <joint name="l_arm_joint3" type="revolute">
@@ -535,6 +542,7 @@
   <child link="l_link3"/>
   <axis xyz="0.0 0.0 -1.0"/>
   <limit upper="1.396263" lower="-1.396263" effort="100" velocity="100"/>
+  <dynamics damping="1.0e-6" friction="0.8"/>
 </joint>
 
 <joint name="r_arm_joint3" type="revolute">
@@ -543,6 +551,7 @@
   <child link="r_link3"/>
   <axis xyz="0.0 0.0 -1.0"/>
   <limit upper="1.396263" lower="-1.396263" effort="100" velocity="100"/>
+  <dynamics damping="1.0e-6" friction="0.8"/>
 </joint>
 
 <joint name="l_arm_joint4" type="revolute">
@@ -551,6 +560,7 @@
   <child link="l_link4"/>
   <axis xyz="0.0 1.0 0.0"/>
   <limit upper="0.174533" lower="-2.356194" effort="100" velocity="100"/>
+  <dynamics damping="1.0e-6" friction="0.8"/>
 </joint>
 
 <joint name="r_arm_joint4" type="revolute">
@@ -559,6 +569,7 @@
   <child link="r_link4"/>
   <axis xyz="0.0 -1.0 0.0"/>
   <limit upper="2.356194" lower="-0.174533" effort="100" velocity="100"/>
+  <dynamics damping="1.0e-6" friction="0.8"/>
 </joint>
 
 <joint name="l_arm_joint5" type="revolute">
@@ -567,6 +578,7 @@
   <child link="l_link5"/>
   <axis xyz="0.0 0.0 -1.0"/>
   <limit upper="1.570796" lower="-1.570796" effort="100" velocity="100"/>
+  <dynamics damping="1.0e-6" friction="0.8"/>
 </joint>
 
 <joint name="r_arm_joint5" type="revolute">
@@ -575,6 +587,7 @@
   <child link="r_link5"/>
   <axis xyz="0.0 0.0 -1.0"/>
   <limit upper="1.570796" lower="-1.570796" effort="100" velocity="100"/>
+  <dynamics damping="1.0e-6" friction="0.8"/>
 </joint>
 
 <joint name="r_arm_joint6" type="revolute">
@@ -583,6 +596,7 @@
   <child link="r_link6"/>
   <axis xyz="0.0 -1.0 0.0"/>
   <limit upper="1.396263" lower="-1.396263" effort="100" velocity="100"/>
+  <dynamics damping="1.0e-6" friction="0.8"/>
 </joint>
 
 <joint name="l_arm_joint6" type="revolute">
@@ -591,6 +605,7 @@
   <child link="l_link6"/>
   <axis xyz="0.0 1.0 0.0"/>
   <limit upper="1.396263" lower="-1.396263" effort="100" velocity="100"/>
+  <dynamics damping="1.0e-6" friction="0.8"/>
 </joint>
 
 <joint name="r_gripper_joint" type="revolute">
@@ -599,6 +614,7 @@
   <child link="r_gripper_a"/>
   <axis xyz="1.0 0.0 0.0"/>
   <limit upper="0.0" lower="-1.22173" effort="100" velocity="100"/>
+  <dynamics damping="1.0e-6" friction="0.8"/>
 </joint>
 
 <joint name="r_gripper_mimic_joint" type="revolute">
@@ -616,6 +632,7 @@
   <child link="l_gripper_a"/>
   <axis xyz="1.0 0.0 0.0"/>
   <limit upper="1.22173" lower="0.0" effort="100" velocity="100"/>
+  <dynamics damping="1.0e-6" friction="0.8"/>
 </joint>
 
 <joint name="l_gripper_mimic_joint" type="revolute">
