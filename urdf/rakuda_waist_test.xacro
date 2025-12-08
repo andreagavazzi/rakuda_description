@@ -29,6 +29,9 @@
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
 
+
+
+
   <!-- 3) Blocco ros2_control -->
 <ros2_control name="DynamixelWaistSystem" type="system">
   <hardware>
@@ -36,10 +39,10 @@
 
     <!-- Porta seriale del tuo U2D2 -->
     <param name="port_name">/dev/ttyUSB0</param> <!-- o il tuo /dev/dxl_u2d2, ecc. -->
-    <param name="baud_rate">3000000</param>
+    <param name="baud_rate">1000000</param>
 
     <!-- Timeout (facoltativo, ma utile) -->
-    <param name="error_timeout_ms">1000</param>
+    <param name="error_timeout_ms">500</param>
 
     <!-- *** QUI LA PARTE CHE MANCA *** -->
     <!-- Path ai file .model del pacchetto dynamixel_hardware_interface -->
@@ -77,7 +80,7 @@
   </joint>
 
   <!-- Il tuo Dynamixel reale -->
-  <gpio name="waist_motor">
+  <gpio name="dxl1">
     <param name="type">dxl</param>
     <param name="ID">1</param> <!-- ID del Dynamixel sul bus -->
 
@@ -94,6 +97,7 @@
     <param name="Position P Gain">800</param>
     <param name="Position I Gain">0</param>
     <param name="Position D Gain">0</param>
+    <param name="Return Delay Time">0</param>
   </gpio>
 </ros2_control>
 
