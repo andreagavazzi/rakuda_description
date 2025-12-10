@@ -61,17 +61,10 @@ def generate_launch_description():
         output='screen'
     )
 
-    # joint_state_publisher_gui per muovere a mano il joint (facoltativo)
-    joint_state_publisher_gui = Node(
-        package='joint_state_publisher_gui',
-        executable='joint_state_publisher_gui',
-        output='screen'
-    )
 
     return LaunchDescription([
         node_robot_state_publisher,
         controller_manager_node,
         jspawner,
         waist_spawner,
-        joint_state_publisher_gui,
     ])

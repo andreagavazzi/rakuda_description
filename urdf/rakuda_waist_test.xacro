@@ -38,13 +38,12 @@
     <plugin>dynamixel_hardware_interface/DynamixelHardware</plugin>
 
     <!-- Porta seriale del tuo U2D2 -->
-    <param name="port_name">/dev/ttyUSB0</param> <!-- o il tuo /dev/dxl_u2d2, ecc. -->
-    <param name="baud_rate">1000000</param>
+    <param name="port_name">/dev/ttyU2D2</param> <!-- o il tuo /dev/dxl_u2d2, ecc. -->
+    <param name="baud_rate">2000000</param>
 
     <!-- Timeout (facoltativo, ma utile) -->
     <param name="error_timeout_ms">500</param>
 
-    <!-- *** QUI LA PARTE CHE MANCA *** -->
     <!-- Path ai file .model del pacchetto dynamixel_hardware_interface -->
     <param name="dynamixel_model_folder">/param/dxl_model</param>
 
@@ -82,22 +81,19 @@
   <!-- Il tuo Dynamixel reale -->
   <gpio name="dxl1">
     <param name="type">dxl</param>
-    <param name="ID">1</param> <!-- ID del Dynamixel sul bus -->
-
-    <!-- Comando e stati come da documentazione -->
+    <param name="ID">1</param>
     <command_interface name="Goal Position"/>
     <state_interface name="Present Position"/>
     <state_interface name="Present Velocity"/>
-
-
-    <!-- Qualche parametro base -->
+    <!--<state_interface name="Present Current"/> -->
     <param name="Operating Mode">3</param> <!-- Position mode -->
-    <param name="Profile Velocity">0</param>
-    <param name="Profile Acceleration">0</param>
+    <param name="Profile Velocity">20</param>
+    <param name="Profile Acceleration">10</param>
     <param name="Position P Gain">800</param>
-    <param name="Position I Gain">0</param>
-    <param name="Position D Gain">0</param>
+    <param name="Position I Gain">100</param>
+    <param name="Position D Gain">100</param>
     <param name="Return Delay Time">0</param>
+    <param name="Drive Mode">0</param> <!-- 0: Clockwise, 1: Counterclockwise -->
   </gpio>
 </ros2_control>
 
