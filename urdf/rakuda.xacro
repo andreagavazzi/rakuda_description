@@ -126,6 +126,10 @@
 <!-- Chiama la macro che aggancia la Orbbec -->
 <xacro:gemini_335_336 parent_link="neck_pitch_link" />
 
+<!-- Chiama la macro che aggancia il ros control -->
+<xacro:include filename="rakuda.ros2_control.xacro"/>
+<xacro:rakuda_ros2_control_settings/>
+
 
 <!-- Link braccia -->
 <link name="l_link1">

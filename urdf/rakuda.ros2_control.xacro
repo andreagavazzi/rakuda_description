@@ -2,229 +2,115 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <xacro:macro name="rakuda_ros2_control_settings">
-    
-    <!-- TODO: inserire il parametro nel main cxaxroJoint che collega la Orbbec alla testa -->
-    <ros2_control name="rakuda" type="system">
+
+    <ros2_control name="DynamixelTorsoHeadSystem" type="system">
+
       <hardware>
-          <plugin>sciurus17_hardware/Sciurus17Hardware</plugin>
-          <param name="port_name">${PORT_NAME}</param>
-          <param name="baudrate">${BAUDRATE}</param>
-          <param name="timeout_seconds">${TIMEOUT_SECONDS}</param>
-          <param name="manipulator_config_file_path">${MANIPULATOR_CONFIG_FILE_PATH}</param>
+        <plugin>dynamixel_hardware_interface/DynamixelHardware</plugin>
+
+        <param name="port_name">/dev/ttyU2D2</param>
+        <param name="baud_rate">2000000</param>
+        <param name="error_timeout_ms">500</param>
+
+        <param name="dynamixel_model_folder">/param/dxl_model</param>
+
+        <param name="number_of_joints">3</param>
+        <param name="number_of_transmissions">3</param>
+
+        <param name="disable_torque_at_init">true</param>
+
+        <!-- 3x3 identity: joint i <-> transmission i -->
+        <param name="transmission_to_joint_matrix">
+          1, 0, 0,
+          0, 1, 0,
+          0, 0, 1
+        </param>
+        <param name="joint_to_transmission_matrix">
+          1, 0, 0,
+          0, 1, 0,
+          0, 0, 1
+        </param>
+
+        <param name="dynamixel_state_pub_msg_name">dynamixel_hardware_interface/dxl_state</param>
+        <param name="get_dynamixel_data_srv_name">dynamixel_hardware_interface/get_dxl_data</param>
+        <param name="set_dynamixel_data_srv_name">dynamixel_hardware_interface/set_dxl_data</param>
+        <param name="reboot_dxl_srv_name">dynamixel_hardware_interface/reboot_dxl</param>
+        <param name="set_dxl_torque_srv_name">dynamixel_hardware_interface/set_dxl_torque</param>
       </hardware>
 
-
-
-
-      <joint name="${NAME_JOINT_BODY}">
-        <command_interface name="position">
-          <param name="min">${JOINT_BODY_LOWER_LIMIT}</param>
-          <param name="max">${JOINT_BODY_UPPER_LIMIT}</param>
-        </command_interface>
+      <joint name="waist_yaw_joint">
+        <command_interface name="position"/>
         <state_interface name="position"/>
         <state_interface name="velocity"/>
         <state_interface name="effort"/>
-        <param name="current_to_effort">3.60</param>
       </joint>
 
-      <joint name="${NAME_JOINT_NECK_1}">
-        <command_interface name="position">
-          <param name="min">${JOINT_NECK_1_LOWER_LIMIT}</param>
-          <param name="max">${JOINT_NECK_1_UPPER_LIMIT}</param>
-        </command_interface>
+      <joint name="neck_yaw_joint">
+        <command_interface name="position"/>
         <state_interface name="position"/>
         <state_interface name="velocity"/>
         <state_interface name="effort"/>
-        <param name="current_to_effort">2.20</param>
       </joint>
 
-      <joint name="${NAME_JOINT_NECK_2}">
-        <command_interface name="position">
-          <param name="min">${JOINT_NECK_2_LOWER_LIMIT}</param>
-          <param name="max">${JOINT_NECK_2_UPPER_LIMIT}</param>
-        </command_interface>
+      <joint name="neck_pitch_joint">
+        <command_interface name="position"/>
         <state_interface name="position"/>
         <state_interface name="velocity"/>
         <state_interface name="effort"/>
-        <param name="current_to_effort">2.20</param>
       </joint>
 
-      <joint name="${NAME_JOINT_ARM_R_1}">
-        <command_interface name="position">
-          <param name="min">${JOINT_ARM_R_1_LOWER_LIMIT}</param>
-          <param name="max">${JOINT_ARM_R_1_UPPER_LIMIT}</param>
-        </command_interface>
-        <state_interface name="position"/>
-        <state_interface name="velocity"/>
-        <state_interface name="effort"/>
-        <param name="current_to_effort">3.60</param>
-      </joint>
+      <gpio name="dxl1">
+        <param name="type">dxl</param>
+        <param name="ID">1</param>
+        <command_interface name="Goal Position"/>
+        <state_interface name="Present Position"/>
+        <state_interface name="Present Velocity"/>
+        <!--<state_interface name="Present Current"/> -->
+        <param name="Operating Mode">3</param>
+        <param name="Profile Velocity">40</param>
+        <param name="Profile Acceleration">20</param>
+        <param name="Position P Gain">800</param>
+        <param name="Position I Gain">100</param>
+        <param name="Position D Gain">100</param>
+        <param name="Return Delay Time">0</param>
+        <param name="Drive Mode">0</param>
+      </gpio>
 
-      <joint name="${NAME_JOINT_ARM_R_2}">
-        <command_interface name="position">
-          <param name="min">${JOINT_ARM_R_2_LOWER_LIMIT}</param>
-          <param name="max">${JOINT_ARM_R_2_UPPER_LIMIT}</param>
-        </command_interface>
-        <state_interface name="position"/>
-        <state_interface name="velocity"/>
-        <state_interface name="effort"/>
-        <param name="current_to_effort">3.60</param>
-      </joint>
+      <gpio name="dxl2">
+        <param name="type">dxl</param>
+        <param name="ID">2</param>
+        <command_interface name="Goal Position"/>
+        <state_interface name="Present Position"/>
+        <state_interface name="Present Velocity"/>
+        <!--<state_interface name="Present Current"/> -->
+        <param name="Operating Mode">3</param>
+        <param name="Profile Velocity">40</param>
+        <param name="Profile Acceleration">20</param>
+        <param name="Position P Gain">800</param>
+        <param name="Position I Gain">100</param>
+        <param name="Position D Gain">100</param>
+        <param name="Return Delay Time">0</param>
+        <param name="Drive Mode">0</param>
+      </gpio>
 
-      <joint name="${NAME_JOINT_ARM_R_3}">
-        <command_interface name="position">
-          <param name="min">${JOINT_ARM_R_3_LOWER_LIMIT}</param>
-          <param name="max">${JOINT_ARM_R_3_UPPER_LIMIT}</param>
-        </command_interface>
-        <state_interface name="position"/>
-        <state_interface name="velocity"/>
-        <state_interface name="effort"/>
-        <param name="current_to_effort">2.20</param>
-      </joint>
-
-      <joint name="${NAME_JOINT_ARM_R_4}">
-        <command_interface name="position">
-          <param name="min">${JOINT_ARM_R_4_LOWER_LIMIT}</param>
-          <param name="max">${JOINT_ARM_R_4_UPPER_LIMIT}</param>
-        </command_interface>
-        <state_interface name="position"/>
-        <state_interface name="velocity"/>
-        <state_interface name="effort"/>
-        <param name="current_to_effort">2.00</param>
-      </joint>
-
-      <joint name="${NAME_JOINT_ARM_R_5}">
-        <command_interface name="position">
-          <param name="min">${JOINT_ARM_R_5_LOWER_LIMIT}</param>
-          <param name="max">${JOINT_ARM_R_5_UPPER_LIMIT}</param>
-        </command_interface>
-        <state_interface name="position"/>
-        <state_interface name="velocity"/>
-        <state_interface name="effort"/>
-        <param name="current_to_effort">2.20</param>
-      </joint>
-
-      <joint name="${NAME_JOINT_ARM_R_6}">
-        <command_interface name="position">
-          <param name="min">${JOINT_ARM_R_6_LOWER_LIMIT}</param>
-          <param name="max">${JOINT_ARM_R_6_UPPER_LIMIT}</param>
-        </command_interface>
-        <state_interface name="position"/>
-        <state_interface name="velocity"/>
-        <state_interface name="effort"/>
-        <param name="current_to_effort">2.20</param>
-      </joint>
-
-      <joint name="${NAME_JOINT_ARM_R_7}">
-        <command_interface name="position">
-          <param name="min">${JOINT_ARM_R_7_LOWER_LIMIT}</param>
-          <param name="max">${JOINT_ARM_R_7_UPPER_LIMIT}</param>
-        </command_interface>
-        <state_interface name="position"/>
-        <state_interface name="velocity"/>
-        <state_interface name="effort"/>
-        <param name="current_to_effort">2.20</param>
-      </joint>
-
-      <joint name="${NAME_JOINT_GRIPPER_R_A}">
-        <command_interface name="position">
-          <param name="min">${JOINT_GRIPPER_R_LOWER_LIMIT}</param>
-          <param name="max">${JOINT_GRIPPER_R_UPPER_LIMIT}</param>
-        </command_interface>
-        <state_interface name="position"/>
-        <state_interface name="velocity"/>
-        <state_interface name="effort"/>
-        <param name="current_to_effort">2.20</param>
-      </joint>
-
-      <joint name="${NAME_JOINT_ARM_L_1}">
-        <command_interface name="position">
-          <param name="min">${JOINT_ARM_L_1_LOWER_LIMIT}</param>
-          <param name="max">${JOINT_ARM_L_1_UPPER_LIMIT}</param>
-        </command_interface>
-        <state_interface name="position"/>
-        <state_interface name="velocity"/>
-        <state_interface name="effort"/>
-        <param name="current_to_effort">3.60</param>
-      </joint>
-
-      <joint name="${NAME_JOINT_ARM_L_2}">
-        <command_interface name="position">
-          <param name="min">${JOINT_ARM_L_2_LOWER_LIMIT}</param>
-          <param name="max">${JOINT_ARM_L_2_UPPER_LIMIT}</param>
-        </command_interface>
-        <state_interface name="position"/>
-        <state_interface name="velocity"/>
-        <state_interface name="effort"/>
-        <param name="current_to_effort">3.60</param>
-      </joint>
-
-      <joint name="${NAME_JOINT_ARM_L_3}">
-        <command_interface name="position">
-          <param name="min">${JOINT_ARM_L_3_LOWER_LIMIT}</param>
-          <param name="max">${JOINT_ARM_L_3_UPPER_LIMIT}</param>
-        </command_interface>
-        <state_interface name="position"/>
-        <state_interface name="velocity"/>
-        <state_interface name="effort"/>
-        <param name="current_to_effort">2.20</param>
-      </joint>
-
-      <joint name="${NAME_JOINT_ARM_L_4}">
-        <command_interface name="position">
-          <param name="min">${JOINT_ARM_L_4_LOWER_LIMIT}</param>
-          <param name="max">${JOINT_ARM_L_4_UPPER_LIMIT}</param>
-        </command_interface>
-        <state_interface name="position"/>
-        <state_interface name="velocity"/>
-        <state_interface name="effort"/>
-        <param name="current_to_effort">2.00</param>
-      </joint>
-
-      <joint name="${NAME_JOINT_ARM_L_5}">
-        <command_interface name="position">
-          <param name="min">${JOINT_ARM_L_5_LOWER_LIMIT}</param>
-          <param name="max">${JOINT_ARM_L_5_UPPER_LIMIT}</param>
-        </command_interface>
-        <state_interface name="position"/>
-        <state_interface name="velocity"/>
-        <state_interface name="effort"/>
-        <param name="current_to_effort">2.20</param>
-      </joint>
-
-      <joint name="${NAME_JOINT_ARM_L_6}">
-        <command_interface name="position">
-          <param name="min">${JOINT_ARM_L_6_LOWER_LIMIT}</param>
-          <param name="max">${JOINT_ARM_L_6_UPPER_LIMIT}</param>
-        </command_interface>
-        <state_interface name="position"/>
-        <state_interface name="velocity"/>
-        <state_interface name="effort"/>
-        <param name="current_to_effort">2.20</param>
-      </joint>
-
-      <joint name="${NAME_JOINT_ARM_L_7}">
-        <command_interface name="position">
-          <param name="min">${JOINT_ARM_L_7_LOWER_LIMIT}</param>
-          <param name="max">${JOINT_ARM_L_7_UPPER_LIMIT}</param>
-        </command_interface>
-        <state_interface name="position"/>
-        <state_interface name="velocity"/>
-        <state_interface name="effort"/>
-        <param name="current_to_effort">2.20</param>
-      </joint>
-
-      <joint name="${NAME_JOINT_GRIPPER_L_A}">
-        <command_interface name="position">
-          <param name="min">${JOINT_GRIPPER_L_LOWER_LIMIT}</param>
-          <param name="max">${JOINT_GRIPPER_L_UPPER_LIMIT}</param>
-        </command_interface>
-        <state_interface name="position"/>
-        <state_interface name="velocity"/>
-        <state_interface name="effort"/>
-        <param name="current_to_effort">2.20</param>
-      </joint>
+      <gpio name="dxl3">
+        <param name="type">dxl</param>
+        <param name="ID">3</param>
+        <command_interface name="Goal Position"/>
+        <state_interface name="Present Position"/>
+        <state_interface name="Present Velocity"/>
+        <!--<state_interface name="Present Current"/> -->
+        <param name="Operating Mode">3</param>
+        <param name="Profile Velocity">40</param>
+        <param name="Profile Acceleration">20</param>
+        <param name="Position P Gain">800</param>
+        <param name="Position I Gain">100</param>
+        <param name="Position D Gain">100</param>
+        <param name="Return Delay Time">0</param>
+        <param name="Drive Mode">0</param>
+      </gpio>
 
     </ros2_control>
   </xacro:macro>
+
 </robot>
