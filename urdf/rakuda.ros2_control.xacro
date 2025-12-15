@@ -1,7 +1,16 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:macro name="rakuda_ros2_control_settings">
+  <!-- Crea la matrice identità NxN Dynamixel -->
+  <xacro:macro name="identity_matrix_csv" params="n">
+    ${', '.join([
+      '1' if i == j else '0'
+      for i in python.range(int(n))
+      for j in python.range(int(n))
+    ])}
+  </xacro:macro>
+
+  <xacro:macro name="rakuda_ros2_control_settings" params="dof">
 
     <ros2_control name="DynamixelTorsoHeadSystem" type="system">
 
@@ -14,22 +23,15 @@
 
         <param name="dynamixel_model_folder">/param/dxl_model</param>
 
-        <param name="number_of_joints">3</param>
-        <param name="number_of_transmissions">3</param>
+        <param name="number_of_joints">${dof}</param>
+        <param name="number_of_transmissions">${dof}</param>
+
+        <param name="transmission_to_joint_matrix"><xacro:identity_matrix_csv n="${dof}"/></param>
+        <param name="joint_to_transmission_matrix"><xacro:identity_matrix_csv n="${dof}"/></param>
+
 
         <param name="disable_torque_at_init">true</param>
 
-        <!-- 3x3 identity: joint i <-> transmission i -->
-        <param name="transmission_to_joint_matrix">
-          1, 0, 0,
-          0, 1, 0,
-          0, 0, 1
-        </param>
-        <param name="joint_to_transmission_matrix">
-          1, 0, 0,
-          0, 1, 0,
-          0, 0, 1
-        </param>
 
         <param name="dynamixel_state_pub_msg_name">dynamixel_hardware_interface/dxl_state</param>
         <param name="get_dynamixel_data_srv_name">dynamixel_hardware_interface/get_dxl_data</param>
@@ -59,6 +61,52 @@
         <state_interface name="effort"/>
       </joint>
 
+      <joint name="l_arm_joint1">
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+
+      <joint name="l_arm_joint2">
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+
+      <joint name="l_arm_joint3">
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+
+      <joint name="l_arm_joint4">
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+
+      <joint name="l_arm_joint5">
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+
+      <joint name="l_arm_joint6">
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+
+      <joint name="l_gripper_joint">
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+
+
+
+<!--TORSO -->
+
       <gpio name="dxl1">
         <param name="type">dxl</param>
         <param name="ID">1</param>
@@ -75,6 +123,9 @@
         <param name="Return Delay Time">0</param>
         <param name="Drive Mode">0</param>
       </gpio>
+
+
+<!--HEAD -->
 
       <gpio name="dxl2">
         <param name="type">dxl</param>
@@ -107,8 +158,127 @@
         <param name="Position I Gain">100</param>
         <param name="Position D Gain">100</param>
         <param name="Return Delay Time">0</param>
+        <param name="Drive Mode">1</param>
+      </gpio>
+
+
+<!--LEFT ARM -->
+
+      <gpio name="dxl11">
+        <param name="type">dxl</param>
+        <param name="ID">11</param>
+        <state_interface name="Present Position"/>
+        <state_interface name="Present Velocity"/>
+        <!--<state_interface name="Present Current"/> -->
+        <param name="Operating Mode">3</param>
+        <param name="Profile Velocity">40</param>
+        <param name="Profile Acceleration">20</param>
+        <param name="Position P Gain">800</param>
+        <param name="Position I Gain">100</param>
+        <param name="Position D Gain">100</param>
+        <param name="Return Delay Time">0</param>
         <param name="Drive Mode">0</param>
       </gpio>
+
+      <gpio name="dxl12">
+        <param name="type">dxl</param>
+        <param name="ID">12</param>
+        <state_interface name="Present Position"/>
+        <state_interface name="Present Velocity"/>
+        <!--<state_interface name="Present Current"/> -->
+        <param name="Operating Mode">3</param>
+        <param name="Profile Velocity">40</param>
+        <param name="Profile Acceleration">20</param>
+        <param name="Position P Gain">800</param>
+        <param name="Position I Gain">100</param>
+        <param name="Position D Gain">100</param>
+        <param name="Return Delay Time">0</param>
+        <param name="Drive Mode">1</param>
+      </gpio>
+
+      <gpio name="dxl13">
+        <param name="type">dxl</param>
+        <param name="ID">13</param>
+        <state_interface name="Present Position"/>
+        <state_interface name="Present Velocity"/>
+        <!--<state_interface name="Present Current"/> -->
+        <param name="Operating Mode">3</param>
+        <param name="Profile Velocity">40</param>
+        <param name="Profile Acceleration">20</param>
+        <param name="Position P Gain">800</param>
+        <param name="Position I Gain">100</param>
+        <param name="Position D Gain">100</param>
+        <param name="Return Delay Time">0</param>
+        <param name="Drive Mode">0</param>
+      </gpio>
+
+      <gpio name="dxl14">
+        <param name="type">dxl</param>
+        <param name="ID">14</param>
+        <state_interface name="Present Position"/>
+        <state_interface name="Present Velocity"/>
+        <!--<state_interface name="Present Current"/> -->
+        <param name="Operating Mode">3</param>
+        <param name="Profile Velocity">40</param>
+        <param name="Profile Acceleration">20</param>
+        <param name="Position P Gain">800</param>
+        <param name="Position I Gain">100</param>
+        <param name="Position D Gain">100</param>
+        <param name="Return Delay Time">0</param>
+        <param name="Drive Mode">0</param>
+      </gpio>
+
+      <gpio name="dxl15">
+        <param name="type">dxl</param>
+        <param name="ID">15</param>
+        <state_interface name="Present Position"/>
+        <state_interface name="Present Velocity"/>
+        <!--<state_interface name="Present Current"/> -->
+        <param name="Operating Mode">3</param>
+        <param name="Profile Velocity">40</param>
+        <param name="Profile Acceleration">20</param>
+        <param name="Position P Gain">800</param>
+        <param name="Position I Gain">100</param>
+        <param name="Position D Gain">100</param>
+        <param name="Return Delay Time">0</param>
+        <param name="Drive Mode">0</param>
+      </gpio>
+
+      <gpio name="dxl16">
+        <param name="type">dxl</param>
+        <param name="ID">16</param>
+        <state_interface name="Present Position"/>
+        <state_interface name="Present Velocity"/>
+        <!--<state_interface name="Present Current"/> -->
+        <param name="Operating Mode">3</param>
+        <param name="Profile Velocity">40</param>
+        <param name="Profile Acceleration">20</param>
+        <param name="Position P Gain">800</param>
+        <param name="Position I Gain">100</param>
+        <param name="Position D Gain">100</param>
+        <param name="Return Delay Time">0</param>
+        <param name="Drive Mode">0</param>
+      </gpio>
+
+      <gpio name="dxl17">
+        <param name="type">dxl</param>
+        <param name="ID">17</param>
+        <state_interface name="Present Position"/>
+        <state_interface name="Present Velocity"/>
+        <!--<state_interface name="Present Current"/> -->
+        <param name="Operating Mode">3</param>
+        <param name="Profile Velocity">40</param>
+        <param name="Profile Acceleration">20</param>
+        <param name="Position P Gain">800</param>
+        <param name="Position I Gain">100</param>
+        <param name="Position D Gain">100</param>
+        <param name="Return Delay Time">0</param>
+        <param name="Drive Mode">0</param>
+      </gpio>
+
+
+<!--RIGHT ARM -->
+
 
     </ros2_control>
   </xacro:macro>
