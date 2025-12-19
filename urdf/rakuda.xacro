@@ -2,7 +2,7 @@
 <robot name="rakuda" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 <xacro:include filename="$(find rakuda_description)/urdf/materials.xacro" />
-<xacro:include filename="$(find rakuda_description)/urdf/rakuda.ros2control" />
+<xacro:include filename="$(find rakuda_description)/urdf/rakuda.ros2_control.xacro" />
 <xacro:include filename="$(find rakuda_description)/urdf/rakuda.gazebo" />
 <xacro:include filename="$(find rakuda_description)/urdf/gemini_335_336.urdf.xacro" />
 

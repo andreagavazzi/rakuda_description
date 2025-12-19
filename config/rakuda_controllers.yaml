@@ -60,11 +60,11 @@ head_controller:
     open_loop_control: true
 
     constraints:
-      stopped_velocity_tolerance: 0.2
-      goal_time: 0.0
+      stopped_velocity_tolerance: 0.05
+      goal_time: 0.5
       neck_yaw_joint:
-        trajectory: 0.2
+        trajectory: 0.3
         goal: 0.05
       neck_pitch_joint:
-        trajectory: 0.2
+        trajectory: 0.3
         goal: 0.05
