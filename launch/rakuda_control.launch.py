@@ -81,6 +81,7 @@ def generate_launch_description():
         output='screen'
     )
 
+
     rviz_node = Node(
         condition=IfCondition(use_rviz),
         package='rviz2',
