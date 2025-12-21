@@ -1,0 +1,47 @@
+from launch import LaunchDescription
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration
+from launch.conditions import IfCondition
+
+from launch_ros.actions import Node
+
+import os
+import xacro
+from ament_index_python.packages import get_package_share_directory
+
+
+def generate_launch_description():
+    description_share = get_package_share_directory('rakuda_description')
+
+    xacro_file = os.path.join(description_share, 'urdf', 'rakuda.xacro')
+    robot_description_config = xacro.process_file(xacro_file)
+    robot_urdf = robot_description_config.toxml()
+
+    rviz_config_file = os.path.join(description_share, 'config', 'display.rviz')
+
+    rviz_arg = DeclareLaunchArgument('rviz', default_value='True')
+    use_rviz = LaunchConfiguration('rviz')
+
+    robot_state_publisher_node = Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        name='robot_state_publisher',
+        parameters=[{'robot_description': robot_urdf}],
+        output='screen'
+    )
+
+    rviz_node = Node(
+        condition=IfCondition(use_rviz),
+        package='rviz2',
+        executable='rviz2',
+        name='rviz2',
+        arguments=['-d', rviz_config_file],
+        output='screen'
+    )
+
+    return LaunchDescription([
+        rviz_arg,
+        robot_state_publisher_node,
+        rviz_node
+    ])
+
