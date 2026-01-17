@@ -103,21 +103,21 @@
 
 <link name="neck_pitch_link">
   <inertial>
-    <origin xyz="0.008434802102082811 -0.0003276428199875459 0.04341435318306919" rpy="0 0 0"/>
-    <mass value="0.2822100615108845"/>
-    <inertia ixx="695e-06" iyy="648e-06" izz="763e-06" ixy="0" iyz="-1e-06" ixz="42e-06"/>
+    <origin xyz="0.008396864265162956 -0.00019864066295206934 0.06883747797830841" rpy="0 0 0"/>
+    <mass value="0.42095197205408197"/>
+    <inertia ixx="4.708852" iyy="12.832797" izz="8.86896" ixy="0.006132" iyz="-0.007571" ixz="0.094646"/>
   </inertial>
   <visual>
     <origin xyz="0.0 -0.0001 -0.4606" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/visual/neck_pitch_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/visual/neck_pitch_link_ap.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="white"/>
   </visual>
   <collision>
-    <origin xyz="0.5 -0.0001 -0.4606" rpy="0 0 0"/>
+    <origin xyz="0.0 -0.0001 -0.4606" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find rakuda_description)/meshes/collision/neck_pitch_link_collision.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/neck_pitch_link_ap_collision.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -126,7 +126,7 @@
 <!-- Chiama la macro che aggancia la Orbbec -->
 <xacro:gemini_335_336 parent_link="neck_pitch_link" />
 
-<!-- Chiama la macro che aggancia il ros control: Inserire il numero di Dynamixel -->
+<!-- Chiama la macro che aggancia il ros control: Inserire il numero totale di Dynamixel -->
 <xacro:property name="dof" value="17"/>
 <xacro:include filename="rakuda.ros2_control.xacro"/>
 <xacro:rakuda_ros2_control_settings dof="${dof}"/>
@@ -482,7 +482,7 @@
   <origin xyz="0.0 0.0 0.0065" rpy="0 0 0"/>
   <parent link="waist_link"/>
   <child link="torso_link"/>
-  <axis xyz="0.0 0.0 -1.0"/>
+  <axis xyz="0.0 0.0 1.0"/>
   <limit upper="1.396263" lower="-1.396263" effort="100" velocity="100"/>
   <dynamics damping="1.0e-6" friction="0.8"/>
 </joint>
@@ -492,7 +492,8 @@
   <parent link="torso_link"/>
   <child link="neck_yaw_link"/>
   <axis xyz="0.0 0.0 1.0"/>
-  <limit upper="1.22173" lower="-1.22173" effort="100" velocity="100"/>
+  <!-- Sciurus17 limit upper="1.22173" lower="-1.22173" effort="100" velocity="100"/ -->
+  <limit upper="0.660" lower="-0.660" effort="100" velocity="100"/>
   <dynamics damping="1.0e-6" friction="0.8"/>
 </joint>
 
@@ -501,7 +502,8 @@
   <parent link="neck_yaw_link"/>
   <child link="neck_pitch_link"/>
   <axis xyz="0.0 -1.0 0.0"/>
-  <limit upper="0.610865" lower="-0.872665" effort="100" velocity="100"/>
+  <!-- Sciurus17 limit upper="0.610865" lower="-0.872665" effort="100" velocity="100" -->
+  <limit upper="0.5235" lower="-0.530" effort="100" velocity="100"/>
   <dynamics damping="1.0e-6" friction="0.8"/>
 </joint>
 

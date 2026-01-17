@@ -242,7 +242,7 @@
     <!-- Joint che collega la Orbbec alla testa -->
     <joint name="camera_joint" type="fixed">
         <!-- Offset della dummy camera - placeholder stilizzato in Fusion -->
-        <origin xyz="0.062346 -0.000241 0.034324" rpy="0 0 0"/>
+        <origin xyz="0.057416 0.0 0.051447" rpy="0 0.099483767 0"/>
         <parent link="${parent_link}"/>
         <child link="camera_link"/>
     </joint>

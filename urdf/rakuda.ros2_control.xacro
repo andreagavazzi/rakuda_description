@@ -176,8 +176,8 @@
         <state_interface name="Present Velocity"/>
         <!--<state_interface name="Present Current"/> -->
         <param name="Operating Mode">3</param>
-        <param name="Profile Velocity">40</param>
-        <param name="Profile Acceleration">20</param>
+        <param name="Profile Velocity">360</param>
+        <param name="Profile Acceleration">180</param>
         <param name="Position P Gain">800</param>
         <param name="Position I Gain">100</param>
         <param name="Position D Gain">100</param>
@@ -193,8 +193,8 @@
         <state_interface name="Present Velocity"/>
         <!--<state_interface name="Present Current"/> -->
         <param name="Operating Mode">3</param>
-        <param name="Profile Velocity">40</param>
-        <param name="Profile Acceleration">20</param>
+        <param name="Profile Velocity">360</param>
+        <param name="Profile Acceleration">180</param>
         <param name="Position P Gain">800</param>
         <param name="Position I Gain">100</param>
         <param name="Position D Gain">100</param>
