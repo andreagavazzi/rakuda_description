@@ -5,7 +5,8 @@ It contains the URDF/Xacro definitions, kinematic tree, inertial parameters and 
 
 The package is designed as the single source of truth for the mechanical structure of Rakuda, supporting dual 7-DOF arms, torso, head and sensor mounts, and is meant to be reused by control, perception and simulation packages across the project.
 
-![Rakuda in RViz](rviz.png)
+
+<img src="rviz2.png" alt="Description" height="300"> <img src="rviz1.png" alt="Description" height="300">
 
 ---
 
@@ -82,7 +83,7 @@ source install/setup.bash
 To visualize Rakuda in RViz2:
 
 ```bash
-ros2 launch rakuda_description display.launch.py
+ros2 launch rakuda_description display.launch.py demo:=true
 ```
 
 This will start:
@@ -91,11 +92,6 @@ This will start:
 - `joint_state_publisher_gui` (by default) to interactively move joints
 - `rviz2` with the preconfigured `display.rviz` layout
 
-You can disable the GUI joint state publisher by passing:
-
-```bash
-ros2 launch rakuda_description display.launch.py gui:=false
-```
 
 ---
 
