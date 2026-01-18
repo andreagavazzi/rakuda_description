@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="head_apollo">
+
+  <xacro:include filename="$(find rakuda_description)/urdf/gemini_335_336.urdf.xacro" />
+
+    <!-- macro che istanzia la testa e la attacca al parent -->
+    <xacro:macro name="head_apollo" params="parent_link">
+
+    <link name="neck_pitch_link">
+    <inertial>
+    <origin xyz="0.008396864265162956 -0.00019864066295206934 0.06883747797830841" rpy="0 0 0"/>
+    <mass value="0.42095197205408197"/>
+    <inertia ixx="4.708852" iyy="12.832797" izz="8.86896" ixy="0.006132" iyz="-0.007571" ixz="0.094646"/>
+    </inertial>
+    <visual>
+    <origin xyz="0.0 -0.0001 -0.4606" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find rakuda_description)/meshes/visual/neck_pitch_link_ap.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="white"/>
+    </visual>
+    <collision>
+    <origin xyz="0.0 -0.0001 -0.4606" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/neck_pitch_link_ap_collision.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    </collision>
+    </link>
+
+    <joint name="neck_pitch_joint" type="revolute">
+        <origin xyz="-0.0 0.0001 0.02655" rpy="0 0 0"/>
+        <parent link="${parent_link}"/>
+        <child link="neck_pitch_link"/>
+        <axis xyz="0.0 -1.0 0.0"/>
+        <!-- Sciurus17 limit upper="0.610865" lower="-0.872665" effort="100" velocity="100" -->
+        <limit upper="0.5235" lower="-0.530" effort="100" velocity="100"/>
+        <dynamics damping="1.0e-6" friction="0.8"/>
+    </joint>
+
+    <!-- Chiama la macro che aggancia la Orbbec -->
+    <xacro:gemini_335_336 parent_link="neck_pitch_link" xyz_joint_origin="0.057416 0.0 0.051447" rpy_joint_origin="0 0.099483767 0" />
+
+  </xacro:macro>
+
+</robot>

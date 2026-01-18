@@ -5,7 +5,7 @@
   <xacro:property name="mesh_path" value="package://orbbec_description/meshes/gemini335_336/" />
 
   <!-- macro che istanzia la Orbbec e la attacca al parent -->
-  <xacro:macro name="gemini_335_336" params="parent_link">
+  <xacro:macro name="gemini_335_336" params="parent_link xyz_joint_origin rpy_joint_origin">
 
     <link name="camera_link">
         <inertial>
@@ -242,7 +242,7 @@
     <!-- Joint che collega la Orbbec alla testa -->
     <joint name="camera_joint" type="fixed">
         <!-- Offset della dummy camera - placeholder stilizzato in Fusion -->
-        <origin xyz="0.057416 0.0 0.051447" rpy="0 0.099483767 0"/>
+        <origin xyz="${xyz_joint_origin}" rpy="${rpy_joint_origin}"/>
         <parent link="${parent_link}"/>
         <child link="camera_link"/>
     </joint>
