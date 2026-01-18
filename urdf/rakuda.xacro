@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <robot name="rakuda" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-<!-- Variabile testa -->
+<!-- Variabile testa anche inseribile in file launch-->
 <xacro:arg name="head_type" default="apollo"/>
 
 <xacro:property name="head_type" value="$(arg head_type)"/>
