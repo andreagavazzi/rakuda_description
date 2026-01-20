@@ -50,7 +50,6 @@
         <origin xyz="0.01587 -0.025 0.0125" rpy="0 0 0" />
         <parent link="camera_link" />
         <child link="camera_left_ir_frame" />
-        <axis xyz="0 0 0" />
     </joint>
 
     <link name="camera_left_ir_optical_frame">
@@ -76,7 +75,6 @@
         <origin xyz="0.01587 -0.025 0.0125" rpy="-1.5707963267949 0 -1.5707963267949" />
         <parent link="camera_link" />
         <child link="camera_left_ir_optical_frame" />
-        <axis xyz="0 0 0" />
     </joint>
 
     <link name="camera_right_ir_frame">
@@ -103,7 +101,6 @@
         <origin xyz="0.01587 0.025 0.0125" rpy="0 0 0" />
         <parent link="camera_link" />
         <child link="camera_right_ir_frame" />
-        <axis xyz="0 0 0" />
     </joint>
 
     <link name="camera_right_ir_optical_frame">
@@ -129,7 +126,6 @@
         <origin xyz="0.01587 0.025 0.0125" rpy="-1.5707963267949 0 -1.5707963267949" />
         <parent link="camera_link" />
         <child link="camera_right_ir_optical_frame" />
-        <axis xyz="0 0 0" />
     </joint>
 
     <link name="camera_color_frame">
@@ -156,7 +152,6 @@
         <origin xyz="0.017533 0.010995 0.012505" rpy="0 0 0" />
         <parent link="camera_link" />
         <child link="camera_color_frame" />
-        <axis xyz="0 0 0" />
     </joint>
 
     <link name="camera_color_optical_frame">
@@ -183,7 +178,6 @@
         <origin xyz="0.017533 0.010995 0.012505" rpy="-1.5707963267949 0 -1.5707963267949" />
         <parent link="camera_link" />
         <child link="camera_color_optical_frame" />
-        <axis xyz="0 0 0" />
     </joint>
 
     <link name="camera_depth_frame">
@@ -210,7 +204,6 @@
         <origin xyz="0.01587 -0.025 0.0125" rpy="0 0 0" />
         <parent link="camera_link" />
         <child link="camera_depth_frame" />
-        <axis xyz="0 0 0" />
     </joint>
 
     <link name="camera_depth_optical_frame">
@@ -235,7 +228,6 @@
         <origin xyz="0.01587 -0.025 0.0125" rpy="-1.5707963267949 0 -1.5707963267949" />
         <parent link="camera_link" />
         <child link="camera_depth_optical_frame" />
-        <axis xyz="0 0 0" />
     </joint>
 
 
