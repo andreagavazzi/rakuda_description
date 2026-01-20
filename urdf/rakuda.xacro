@@ -7,6 +7,7 @@
 <xacro:property name="head_type" value="$(arg head_type)"/>
 
 
+<xacro:include filename="$(find rakuda_description)/urdf/gemini_335_336.urdf.xacro" />
 <xacro:include filename="$(find rakuda_description)/urdf/materials.xacro" />
 <xacro:include filename="$(find rakuda_description)/urdf/rakuda.ros2_control.xacro" />
 <xacro:include filename="$(find rakuda_description)/urdf/rakuda.gazebo" />
