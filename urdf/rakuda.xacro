@@ -124,7 +124,6 @@
 
 <!-- Chiama la macro che aggancia il ros control: Inserire il numero totale di Dynamixel -->
 <xacro:property name="dof" value="17"/>
-<xacro:include filename="rakuda.ros2_control.xacro"/>
 <xacro:rakuda_ros2_control_settings dof="${dof}"/>
 
 
