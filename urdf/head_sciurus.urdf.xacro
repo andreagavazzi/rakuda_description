@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="head_apollo">
 
-  <xacro:include filename="$(find rakuda_description)/urdf/gemini_335_336.urdf.xacro" />
-
-    <!-- macro che istanzia la testa e la attacca al parent -->
+      <!-- macro che istanzia la testa e la attacca al parent -->
     <xacro:macro name="head_sciurus" params="parent_link">
 
     <link name="neck_pitch_link">
