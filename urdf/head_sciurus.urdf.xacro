@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="head_apollo">
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="head_sciurus">
 
       <!-- macro che istanzia la testa e la attacca al parent -->
     <xacro:macro name="head_sciurus" params="parent_link">
