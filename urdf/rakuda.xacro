@@ -27,13 +27,14 @@
 </xacro:if>
 
 
-<!-- 'base_link'  to Gazebo 'world' -->
+<!-- 'base_link'  to Gazebo 'world' 
 <link name="world"/>
 
 <joint name="base_link_to_world_joint" type="fixed">
   <parent link="world"/>
   <child link="base_link"/>
 </joint>
+-->
 
 <!-- Main links -->
 
