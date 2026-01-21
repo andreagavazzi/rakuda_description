@@ -1,0 +1,96 @@
+<?xml version="1.0" ?>
+<robot name="rakuda" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+
+
+<xacro:include filename="$(find rakuda_description)/urdf/gemini_335_336_test.urdf.xacro" />
+<xacro:include filename="$(find rakuda_description)/urdf/materials.xacro" />
+
+
+
+<!-- 'base_link'  to Gazebo 'world' 
+<link name="world"/>
+
+<joint name="base_link_to_world_joint" type="fixed">
+  <parent link="world"/>
+  <child link="base_link"/>
+</joint>
+-->
+
+<!-- Main links -->
+
+<link name="base_link">
+  <inertial>
+    <origin xyz="-0.020408922979267937 -4.8555006463835264e-05 0.05284203414197219" rpy="0 0 0"/>
+    <mass value="1.1379124037846244"/>
+    <inertia ixx="5787e-06" iyy="6743e-06" izz="3335e-06" ixy="-4e-06" iyz="-2e-06" ixz="-576e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find rakuda_description)/meshes/visual/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="white"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/base_link_collision.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="waist_link">
+  <inertial>
+    <origin xyz="0.00015195021146941867 -2.820226960486473e-06 -0.004137928658236423" rpy="0 0 0"/>
+    <mass value="0.04400005195575271"/>
+    <inertia ixx="10e-06" iyy="13e-06" izz="17e-06" ixy="0" iyz="0" ixz="0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0 0.0 -0.302" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find rakuda_description)/meshes/visual/waist_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="white"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0 0.0 -0.302" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find rakuda_description)/meshes/collision/waist_link_collision.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+
+<link name="torso_link">
+  <visual>
+    <origin xyz="-0.0 -0.0 -0.3085" rpy="0 0 0"/>
+  </visual>
+</link>
+
+
+
+
+<!-- Joints -->
+
+<joint name="base_waist_joint" type="fixed">
+  <origin xyz="0.0 0.0 0.302" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="waist_link"/>
+</joint>
+
+<joint name="waist_yaw_joint" type="revolute">
+  <origin xyz="0.0 0.0 0.0065" rpy="0 0 0"/>
+  <parent link="waist_link"/>
+  <child link="torso_link"/>
+  <axis xyz="0.0 0.0 1.0"/>
+  <limit upper="1.396263" lower="-1.396263" effort="100" velocity="100"/>
+  <dynamics damping="1.0e-6" friction="0.8"/>
+</joint>
+
+
+
+<!-- Chiama la macro che aggancia la Orbbec -->
+<xacro:gemini_335_336_test parent_link="torso_link" xyz_joint_origin="0.0 0.0 0.0" rpy_joint_origin="0 0 0" />
+
+</robot>
