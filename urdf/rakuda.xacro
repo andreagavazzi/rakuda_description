@@ -469,7 +469,7 @@
 <!-- Joints -->
 
 <joint name="base_waist_joint" type="fixed">
-  <origin xyz="0.0 0.0 0.302" rpy="0 0 0"/>
+  <origin xyz="0.0 0.0 0.306" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="waist_link"/>
 </joint>
