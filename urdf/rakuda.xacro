@@ -39,11 +39,6 @@
 <!-- Main links -->
 
 <link name="base_link">
-  <inertial>
-    <origin xyz="-0.020408922979267937 -4.8555006463835264e-05 0.05284203414197219" rpy="0 0 0"/>
-    <mass value="1.1379124037846244"/>
-    <inertia ixx="5787e-06" iyy="6743e-06" izz="3335e-06" ixy="-4e-06" iyz="-2e-06" ixz="-576e-06"/>
-  </inertial>
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
@@ -58,6 +53,21 @@
     </geometry>
   </collision>
 </link>
+
+<link name="base_inertia_link">
+  <inertial>
+    <origin xyz="-0.020408922979267937 -4.8555006463835264e-05 0.05284203414197219" rpy="0 0 0"/>
+    <mass value="1.1379124037846244"/>
+    <inertia ixx="5787e-06" iyy="6743e-06" izz="3335e-06" ixy="-4e-06" iyz="-2e-06" ixz="-576e-06"/>
+  </inertial>
+</link>
+
+<joint name="base_inertia_joint" type="fixed">
+  <parent link="base_link"/>
+  <child link="base_inertia_link"/>
+  <origin xyz="0 0 0" rpy="0 0 0"/>
+</joint>
+
 
 <link name="waist_link">
   <inertial>
