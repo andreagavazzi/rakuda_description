@@ -14,7 +14,7 @@ def generate_launch_description():
     description_share = get_package_share_directory('rakuda_description')
 
     # Args
-    rviz_arg = DeclareLaunchArgument('rviz', default_value='true')
+    rviz_arg = DeclareLaunchArgument('rviz', default_value='false')
     demo_arg = DeclareLaunchArgument('demo', default_value='false',
         description='If true, starts joint_state_publisher_gui for manual joint control (demo mode).')
 
