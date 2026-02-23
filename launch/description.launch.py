@@ -14,7 +14,8 @@ def generate_launch_description():
     description_share = get_package_share_directory('rakuda_description')
 
     # Args
-    rviz_arg = DeclareLaunchArgument('rviz', default_value='false')
+    rviz_arg = DeclareLaunchArgument('rviz', default_value='false',
+        description='If true, starts rviz with a pre-configured display.')
     demo_arg = DeclareLaunchArgument('demo', default_value='false',
         description='If true, starts joint_state_publisher_gui for manual joint control (demo mode).')
 
@@ -22,12 +23,12 @@ def generate_launch_description():
     demo = LaunchConfiguration('demo')
 
     # Robot description (xacro -> urdf xml)
-    xacro_file = os.path.join(description_share, 'urdf', 'rakuda.xacro')
+    xacro_file = os.path.join(description_share, 'urdf', 'rakuda.urdf.xacro')
     robot_description_config = xacro.process_file(xacro_file)
     robot_urdf = robot_description_config.toxml()
 
     # RViz config
-    rviz_config_file = os.path.join(description_share, 'config', 'display.rviz')
+    rviz_config_file = os.path.join(description_share, 'rviz', 'display.rviz')
 
     # Nodes
     robot_state_publisher_node = Node(
