@@ -24,6 +24,9 @@
                 <color rgba="0.01 0.01 0.01 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </collision>
     </link>
 
     <link name="camera_left_ir_frame">
@@ -44,6 +47,9 @@
                 <color rgba="0.501960784313725 0.250980392156863 0.250980392156863 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </collision>
     </link>
 
     <joint name="camera_left_ir_joint" type="fixed">
@@ -69,6 +75,9 @@
                 <color rgba="0.501960784313725 0.250980392156863 0.250980392156863 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </collision>
     </link>
 
     <joint name="camera_left_ir_optical_joint" type="fixed">
@@ -95,6 +104,9 @@
                 <color rgba="0.501960784313725 0.250980392156863 0.250980392156863 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </collision>
     </link>
 
     <joint name="camera_right_ir_joint" type="fixed">
@@ -120,6 +132,9 @@
                 <color rgba="0.501960784313725 0.250980392156863 0.250980392156863 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </collision>
     </link>
 
     <joint name="camera_right_ir_optical_joint" type="fixed">
@@ -146,6 +161,9 @@
                 <color rgba="0.501960784313725 0.250980392156863 0.250980392156863 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </collision>
     </link>
 
     <joint name="camera_color_joint" type="fixed">
@@ -172,6 +190,9 @@
                 <color rgba="0.501960784313725 0.250980392156863 0.250980392156863 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </collision>
     </link>
 
     <joint name="camera_color_optical_joint" type="fixed">
@@ -198,6 +219,9 @@
                 <color rgba="0.501960784313725 0.250980392156863 0.250980392156863 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </collision>
     </link>
 
     <joint name="camera_depth_joint" type="fixed">
@@ -222,6 +246,9 @@
                 <color rgba="0.501960784313725 0.250980392156863 0.250980392156863 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </collision>
     </link>
 
     <joint name="camera_depth_optical_joint" type="fixed">

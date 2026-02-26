@@ -10,11 +10,18 @@
     ])}
   </xacro:macro>
 
-  <xacro:macro name="rakuda_ros2_control_settings" params="dof">
+<xacro:macro name="rakuda_ros2_control_settings" params="dof use_mock_hardware:=true mock_sensor_commands:=true">
 
-    <ros2_control name="DynamixelTorsoHeadSystem" type="system">
+  <!-- (consiglio) rinomina per non confondere i log -->
+  <ros2_control name="RakudaSystem" type="system">
+    <hardware>
 
-      <hardware>
+      <xacro:if value="${use_mock_hardware}">
+        <plugin>mock_components/GenericSystem</plugin>
+        <param name="mock_sensor_commands">${mock_sensor_commands}</param>
+      </xacro:if>
+
+      <xacro:unless value="${use_mock_hardware}">
         <plugin>dynamixel_hardware_interface/DynamixelHardware</plugin>
 
         <param name="port_name">/dev/ttyU2D2</param>
@@ -38,6 +45,8 @@
         <param name="set_dynamixel_data_srv_name">dynamixel_hardware_interface/set_dxl_data</param>
         <param name="reboot_dxl_srv_name">dynamixel_hardware_interface/reboot_dxl</param>
         <param name="set_dxl_torque_srv_name">dynamixel_hardware_interface/set_dxl_torque</param>
+
+        </xacro:unless>
       </hardware>
 
       <joint name="waist_yaw_joint">

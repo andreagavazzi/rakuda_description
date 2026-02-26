@@ -3,6 +3,8 @@
 
 <!-- Variabile testa anche inseribile in file launch-->
 <xacro:arg name="head_type" default="apollo"/>
+<xacro:arg name="use_mock_hardware" default="false"/>
+<xacro:arg name="mock_sensor_commands" default="false"/>
 
 <xacro:property name="head_type" value="$(arg head_type)"/>
 
@@ -10,7 +12,7 @@
 <xacro:include filename="$(find rakuda_description)/urdf/gemini_335_336.urdf.xacro" />
 <xacro:include filename="$(find rakuda_description)/urdf/materials.xacro" />
 <xacro:include filename="$(find rakuda_description)/urdf/rakuda.ros2_control.xacro" />
-<xacro:include filename="$(find rakuda_description)/urdf/rakuda.gazebo" />
+
 
 <!-- Teste disponibili -->
 <xacro:include filename="$(find rakuda_description)/urdf/head_apollo.urdf.xacro"/>
@@ -135,7 +137,10 @@
 
 <!-- Chiama la macro che aggancia il ros control: Inserire il numero totale di Dynamixel -->
 <xacro:property name="dof" value="17"/>
-<xacro:rakuda_ros2_control_settings dof="${dof}"/>
+<xacro:rakuda_ros2_control_settings
+  dof="${dof}"
+  use_mock_hardware="$(arg use_mock_hardware)"
+  mock_sensor_commands="$(arg mock_sensor_commands)"/>
 
 
 <!-- Link braccia -->
