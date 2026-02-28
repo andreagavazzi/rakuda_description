@@ -26,7 +26,7 @@ setup(
     ],
 
     install_requires=['setuptools'],
-    zip_safe=True,
+    zip_safe=False,
     maintainer='author',
     maintainer_email='todo@todo.com',
     description='The ' + package_name + ' package',

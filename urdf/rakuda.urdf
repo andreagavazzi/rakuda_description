@@ -55,6 +55,9 @@
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://orbbec_description/meshes/gemini335_336/camera_link.STL"/>
+      </geometry>
     </collision>
   </link>
   <link name="camera_left_ir_frame">
@@ -74,6 +77,9 @@
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://orbbec_description/meshes/gemini335_336/camera_left_ir_frame.STL"/>
+      </geometry>
     </collision>
   </link>
   <joint name="camera_left_ir_joint" type="fixed">
@@ -98,6 +104,9 @@
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://orbbec_description/meshes/gemini335_336/camera_left_ir_optical_frame.STL"/>
+      </geometry>
     </collision>
   </link>
   <joint name="camera_left_ir_optical_joint" type="fixed">
@@ -122,6 +131,9 @@
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://orbbec_description/meshes/gemini335_336/camera_right_ir_frame.STL"/>
+      </geometry>
     </collision>
   </link>
   <joint name="camera_right_ir_joint" type="fixed">
@@ -146,6 +158,9 @@
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://orbbec_description/meshes/gemini335_336/camera_right_ir_optical_frame.STL"/>
+      </geometry>
     </collision>
   </link>
   <joint name="camera_right_ir_optical_joint" type="fixed">
@@ -170,6 +185,9 @@
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://orbbec_description/meshes/gemini335_336/camera_color_frame.STL"/>
+      </geometry>
     </collision>
   </link>
   <joint name="camera_color_joint" type="fixed">
@@ -194,6 +212,9 @@
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://orbbec_description/meshes/gemini335_336/camera_color_optical_frame.STL"/>
+      </geometry>
     </collision>
   </link>
   <joint name="camera_color_optical_joint" type="fixed">
@@ -218,6 +239,9 @@
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://orbbec_description/meshes/gemini335_336/camera_depth_frame.STL"/>
+      </geometry>
     </collision>
   </link>
   <joint name="camera_depth_joint" type="fixed">
@@ -242,6 +266,9 @@
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://orbbec_description/meshes/gemini335_336/camera_depth_optical_frame.STL"/>
+      </geometry>
     </collision>
   </link>
   <joint name="camera_depth_optical_joint" type="fixed">
