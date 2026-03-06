@@ -1,6 +1,41 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+
+  <!--
+  ╔═════════════════════════════════════════════════════════════════════╗
+  ║           MAPPING JOINT <-> DYNAMIXEL  (transmission matrix)        ║
+  ║  Index   │ Nome joint          │ gpio name              │ ID        ║
+  ║──────────┼─────────────────────┼────────────────────────┼───────────║
+  ║  0       │ waist_yaw_joint     │ waist_yaw_dxl          │  1        ║
+  ║  1       │ neck_yaw_joint      │ neck_yaw_dxl           │  2        ║
+  ║  2       │ neck_pitch_joint    │ neck_pitch_dxl         │  3        ║
+  ║  3       │ l_arm_joint1        │ l_arm_joint1_dxl       │ 11        ║
+  ║  4       │ l_arm_joint2        │ l_arm_joint2_dxl       │ 12        ║
+  ║  5       │ l_arm_joint3        │ l_arm_joint3_dxl       │ 13        ║
+  ║  6       │ l_arm_joint4        │ l_arm_joint4_dxl       │ 14        ║
+  ║  7       │ l_arm_joint5        │ l_arm_joint5_dxl       │ 15        ║
+  ║  8       │ l_arm_joint6        │ l_arm_joint6_dxl       │ 16        ║
+  ║  9       │ l_gripper_joint     │ l_gripper_dxl          │ 17        ║
+  ║ 10       │ r_arm_joint1        │ r_arm_joint1_dxl       │ 21        ║
+  ║ 11       │ r_arm_joint2        │ r_arm_joint2_dxl       │ 22        ║
+  ║ 12       │ r_arm_joint3        │ r_arm_joint3_dxl       │ 23        ║
+  ║ 13       │ r_arm_joint4        │ r_arm_joint4_dxl       │ 24        ║
+  ║ 14       │ r_arm_joint5        │ r_arm_joint5_dxl       │ 25        ║
+  ║ 15       │ r_arm_joint6        │ r_arm_joint6_dxl       │ 26        ║
+  ║ 16       │ r_gripper_joint     │ r_gripper_dxl          │ 27        ║
+  ╚═════════════════════════════════════════════════════════════════════╝
+
+  NOTA: i gpio devono essere dichiarati nello STESSO ORDINE degli indici
+  della tabella, perché la transmission matrix identità mappa joint[i] <-> gpio[i].
+  NON riordinare i blocchi gpio senza aggiornare anche la tabella sopra.
+
+  NOTA: Present Current è commentato intenzionalmente su tutti i motori
+  tranne dxl1 (torso). Sarà abilitato in futuro per la gravity compensation.
+
+  Drive Mode: 0 = normale (CW), 1 = invertito (CCW)
+  -->
+
   <!-- Crea la matrice identità NxN Dynamixel -->
   <xacro:macro name="identity_matrix_csv" params="n">
     ${', '.join([
@@ -10,9 +45,8 @@
     ])}
   </xacro:macro>
 
-<xacro:macro name="rakuda_ros2_control_settings" params="dof use_mock_hardware:=true mock_sensor_commands:=true">
+<xacro:macro name="rakuda_ros2_control_settings" params="dof use_mock_hardware:=false mock_sensor_commands:=false">
 
-  <!-- (consiglio) rinomina per non confondere i log -->
   <ros2_control name="RakudaSystem" type="system">
     <hardware>
 
@@ -36,9 +70,7 @@
         <param name="transmission_to_joint_matrix"><xacro:identity_matrix_csv n="${dof}"/></param>
         <param name="joint_to_transmission_matrix"><xacro:identity_matrix_csv n="${dof}"/></param>
 
-
         <param name="disable_torque_at_init">true</param>
-
 
         <param name="dynamixel_state_pub_msg_name">dynamixel_hardware_interface/dxl_state</param>
         <param name="get_dynamixel_data_srv_name">dynamixel_hardware_interface/get_dxl_data</param>
@@ -49,6 +81,9 @@
         </xacro:unless>
       </hardware>
 
+<!-- JOINT INTERFACE (ros2_control / moveit)-->
+
+      <!-- index 0 -->
       <joint name="waist_yaw_joint">
         <command_interface name="position"/>
         <state_interface name="position"/>
@@ -56,6 +91,7 @@
         <state_interface name="effort"/>
       </joint>
 
+      <!-- index 1 -->
       <joint name="neck_yaw_joint">
         <command_interface name="position"/>
         <state_interface name="position"/>
@@ -63,6 +99,7 @@
         <state_interface name="effort"/>
       </joint>
 
+      <!-- index 2 -->
       <joint name="neck_pitch_joint">
         <command_interface name="position"/>
         <state_interface name="position"/>
@@ -70,6 +107,7 @@
         <state_interface name="effort"/>
       </joint>
 
+      <!-- index 3 -->
       <joint name="l_arm_joint1">
         <command_interface name="position"/>
         <state_interface name="position"/>
@@ -77,6 +115,7 @@
         <state_interface name="effort"/>
       </joint>
 
+      <!-- index 4 -->
       <joint name="l_arm_joint2">
         <command_interface name="position"/>
         <state_interface name="position"/>
@@ -84,6 +123,7 @@
         <state_interface name="effort"/>
       </joint>
 
+      <!-- index 5 -->
       <joint name="l_arm_joint3">
         <command_interface name="position"/>
         <state_interface name="position"/>
@@ -91,6 +131,7 @@
         <state_interface name="effort"/>
       </joint>
 
+      <!-- index 6 -->
       <joint name="l_arm_joint4">
         <command_interface name="position"/>
         <state_interface name="position"/>
@@ -98,6 +139,7 @@
         <state_interface name="effort"/>
       </joint>
 
+      <!-- index 7 -->
       <joint name="l_arm_joint5">
         <command_interface name="position"/>
         <state_interface name="position"/>
@@ -105,6 +147,7 @@
         <state_interface name="effort"/>
       </joint>
 
+      <!-- index 8 -->
       <joint name="l_arm_joint6">
         <command_interface name="position"/>
         <state_interface name="position"/>
@@ -112,6 +155,7 @@
         <state_interface name="effort"/>
       </joint>
 
+      <!-- index 9 -->
       <joint name="l_gripper_joint">
       	<command_interface name="position"/>
         <state_interface name="position"/>
@@ -119,6 +163,7 @@
         <state_interface name="effort"/>
       </joint>
 
+      <!-- index 10 -->
       <joint name="r_arm_joint1">
         <command_interface name="position"/>
         <state_interface name="position"/>
@@ -126,6 +171,7 @@
         <state_interface name="effort"/>
       </joint>
 
+      <!-- index 11 -->
       <joint name="r_arm_joint2">
         <command_interface name="position"/>
         <state_interface name="position"/>
@@ -133,6 +179,7 @@
         <state_interface name="effort"/>
       </joint>
 
+      <!-- index 12 -->
       <joint name="r_arm_joint3">
         <command_interface name="position"/>
         <state_interface name="position"/>
@@ -140,6 +187,7 @@
         <state_interface name="effort"/>
       </joint>
 
+      <!-- index 13 -->
       <joint name="r_arm_joint4">
         <command_interface name="position"/>
         <state_interface name="position"/>
@@ -147,6 +195,7 @@
         <state_interface name="effort"/>
       </joint>
 
+      <!-- index 14 -->
       <joint name="r_arm_joint5">
         <command_interface name="position"/>
         <state_interface name="position"/>
@@ -154,6 +203,7 @@
         <state_interface name="effort"/>
       </joint>
 
+      <!-- index 15 -->
       <joint name="r_arm_joint6">
         <command_interface name="position"/>
         <state_interface name="position"/>
@@ -161,6 +211,7 @@
         <state_interface name="effort"/>
       </joint>
 
+      <!-- index 16 -->
       <joint name="r_gripper_joint">
       	<command_interface name="position"/>
         <state_interface name="position"/>
@@ -168,10 +219,12 @@
         <state_interface name="effort"/>
       </joint>
 
+<!-- GPIO /Dynamixel Hardware -->
 
 <!--TORSO -->
 
-      <gpio name="dxl1">
+      <!-- index 0 | waist_yaw_joint | ID 1 -->
+      <gpio name="waist_yaw_dxl">
         <param name="type">dxl</param>
         <param name="ID">1</param>
         <command_interface name="Goal Position"/>	
@@ -188,10 +241,10 @@
         <param name="Drive Mode">0</param>
       </gpio>
 
-
 <!--HEAD -->
 
-      <gpio name="dxl2">
+      <!-- index 1 | neck_yaw_joint | ID 2 -->
+      <gpio name="neck_yaw_dxl">
         <param name="type">dxl</param>
         <param name="ID">2</param>
         <command_interface name="Goal Position"/>
@@ -208,7 +261,8 @@
         <param name="Drive Mode">0</param>
       </gpio>
 
-      <gpio name="dxl3">
+      <!-- index 2 | neck_pitch_joint | ID 3 | Drive Mode 1 = invertito -->
+      <gpio name="neck_pitch_dxl">
         <param name="type">dxl</param>
         <param name="ID">3</param>
         <command_interface name="Goal Position"/>
@@ -225,10 +279,10 @@
         <param name="Drive Mode">1</param>
       </gpio>
 
-
 <!--LEFT ARM -->
 
-      <gpio name="dxl11">
+      <!-- index 3 | l_arm_joint1 | ID 11 -->
+      <gpio name="l_arm_joint1_dxl">
         <param name="type">dxl</param>
         <param name="ID">11</param>
         <command_interface name="Goal Position"/>
@@ -245,7 +299,8 @@
         <param name="Drive Mode">0</param>
       </gpio>
 
-      <gpio name="dxl12">
+      <!-- index 4 | l_arm_joint2 | ID 12 | Drive Mode 1 = invertito -->
+      <gpio name="l_arm_joint2_dxl">
         <param name="type">dxl</param>
         <param name="ID">12</param>
         <command_interface name="Goal Position"/>
@@ -262,7 +317,8 @@
         <param name="Drive Mode">1</param>
       </gpio>
 
-      <gpio name="dxl13">
+      <!-- index 5 | l_arm_joint3 | ID 13 -->
+      <gpio name="l_arm_joint3_dxl">
         <param name="type">dxl</param>
         <param name="ID">13</param>
         <command_interface name="Goal Position"/>
@@ -279,7 +335,8 @@
         <param name="Drive Mode">0</param>
       </gpio>
 
-      <gpio name="dxl14">
+      <!-- index 6 | l_arm_joint4 | ID 14 -->
+      <gpio name="l_arm_joint4_dxl">
         <param name="type">dxl</param>
         <param name="ID">14</param>
         <command_interface name="Goal Position"/>
@@ -296,7 +353,8 @@
         <param name="Drive Mode">0</param>
       </gpio>
 
-      <gpio name="dxl15">
+      <!-- index 7 | l_arm_joint5 | ID 15 -->
+      <gpio name="l_arm_joint5_dxl">
         <param name="type">dxl</param>
         <param name="ID">15</param>
         <command_interface name="Goal Position"/>
@@ -313,7 +371,8 @@
         <param name="Drive Mode">0</param>
       </gpio>
 
-      <gpio name="dxl16">
+      <!-- index 8 | l_arm_joint6 | ID 16 -->
+      <gpio name="l_arm_joint6_dxl">
         <param name="type">dxl</param>
         <param name="ID">16</param>
         <command_interface name="Goal Position"/>
@@ -330,7 +389,8 @@
         <param name="Drive Mode">0</param>
       </gpio>
 
-      <gpio name="dxl17">
+      <!-- index 9 | l_gripper_joint | ID 17 -->
+      <gpio name="l_gripper_dxl">
         <param name="type">dxl</param>
         <param name="ID">17</param>
         <command_interface name="Goal Position"/>
@@ -347,11 +407,10 @@
         <param name="Drive Mode">0</param>
       </gpio>
 
-
-
 <!--RIGHT ARM -->
 
-      <gpio name="dxl21">
+      <!-- index 10 | r_arm_joint1 | ID 21 -->
+      <gpio name="r_arm_joint1_dxl">
         <param name="type">dxl</param>
         <param name="ID">21</param>
         <command_interface name="Goal Position"/>
@@ -368,7 +427,8 @@
         <param name="Drive Mode">0</param>
       </gpio>
 
-      <gpio name="dxl22">
+      <!-- index 11 | r_arm_joint2 | ID 22 | Drive Mode 1 = invertito -->
+      <gpio name="r_arm_joint2_dxl">
         <param name="type">dxl</param>
         <param name="ID">22</param>
         <command_interface name="Goal Position"/>
@@ -385,7 +445,8 @@
         <param name="Drive Mode">1</param>
       </gpio>
 
-      <gpio name="dxl23">
+      <!-- index 12 | r_arm_joint3 | ID 23 -->
+      <gpio name="r_arm_joint3_dxl">
         <param name="type">dxl</param>
         <param name="ID">23</param>
         <command_interface name="Goal Position"/>
@@ -402,7 +463,8 @@
         <param name="Drive Mode">0</param>
       </gpio>
 
-      <gpio name="dxl24">
+      <!-- index 13 | r_arm_joint4 | ID 24 -->
+      <gpio name="r_arm_joint4_dxl">
         <param name="type">dxl</param>
         <param name="ID">24</param>
         <command_interface name="Goal Position"/>
@@ -419,7 +481,8 @@
         <param name="Drive Mode">0</param>
       </gpio>
 
-      <gpio name="dxl25">
+      <!-- index 14 | r_arm_joint5 | ID 25 -->
+      <gpio name="r_arm_joint5_dxl">
         <param name="type">dxl</param>
         <param name="ID">25</param>
         <command_interface name="Goal Position"/>
@@ -436,7 +499,8 @@
         <param name="Drive Mode">0</param>
       </gpio>
 
-      <gpio name="dxl26">
+      <!-- index 15 | r_arm_joint6 | ID 26 -->
+      <gpio name="r_arm_joint6_dxl">
         <param name="type">dxl</param>
         <param name="ID">26</param>
         <command_interface name="Goal Position"/>
@@ -453,7 +517,8 @@
         <param name="Drive Mode">0</param>
       </gpio>
 
-      <gpio name="dxl27">
+      <!-- index 16 | r_gripper_joint | ID 27 -->
+      <gpio name="r_gripper_dxl">
         <param name="type">dxl</param>
         <param name="ID">27</param>
         <command_interface name="Goal Position"/>
