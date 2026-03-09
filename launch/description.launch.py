@@ -36,7 +36,7 @@ def generate_launch_description():
         executable='robot_state_publisher',
         name='robot_state_publisher',
         parameters=[{'robot_description': robot_urdf}],
-        output='screen'
+        output='log'
     )
 
     # Only in demo mode: publish /joint_states via GUI sliders
@@ -45,7 +45,7 @@ def generate_launch_description():
         package='joint_state_publisher_gui',
         executable='joint_state_publisher_gui',
         name='joint_state_publisher_gui',
-        output='screen'
+        output='log'
     )
 
     rviz_node = Node(
@@ -54,7 +54,7 @@ def generate_launch_description():
         executable='rviz2',
         name='rviz2',
         arguments=['-d', rviz_config_file],
-        output='screen'
+        output='log'
     )
 
     return LaunchDescription([

@@ -219,6 +219,8 @@
         <state_interface name="effort"/>
       </joint>
 
+
+      <xacro:unless value="${use_mock_hardware}">
 <!-- GPIO /Dynamixel Hardware -->
 
 <!--TORSO -->
@@ -534,7 +536,9 @@
         <param name="Return Delay Time">0</param>
         <param name="Drive Mode">0</param>
       </gpio>
-
+      
+   
+      </xacro:unless>
     </ros2_control>
   </xacro:macro>
 
