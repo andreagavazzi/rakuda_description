@@ -83,7 +83,7 @@ source install/setup.bash
 To visualize Rakuda in RViz2:
 
 ```bash
-ros2 launch rakuda_description display.launch.py demo:=true
+ros2 launch rakuda_description display.launch.py demo:='true' rviz:='true'
 ```
 
 This will start:
