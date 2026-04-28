@@ -3,7 +3,7 @@
 <package format="3">
 <name>rakuda_description</name>
   <version>0.0.0</version>
-<description>The rakuda_description package</description>
+<description>rakuda_description package</description>
   <maintainer email="todo@todo.com">author</maintainer>
   <license>TODO: License declaration</license>
 
