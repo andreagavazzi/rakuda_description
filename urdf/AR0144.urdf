@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<!--
+  Waveshare AR0144 Stereo USB Camera (A)
+
+  Quote dal disegno Waveshare (mm):
+    PCB 66.00 x 30.00, spessore 1.60, raggio angoli R2
+    profondita' totale 17.72 (retro PCB -> fronte lente)
+    lenti D14, centri a 7.00 dai bordi laterali, baseline 52.00
+    supporto lente 13.10 x 13.10, gradini a 3.50 e 7.50 dal fronte PCB
+    fori di fissaggio D3.2 (piazzola D5), interasse 60.00 x 24.00, 3.00 dai bordi
+    viti supporto lente D1.8, interasse 52.00 x 18.00
+    USB-C sul retro, centrato, uscita verso il basso
+  Peso 15 g (pagina prodotto).
+
+  Origine di ${prefix}stereo_link: centro della faccia POSTERIORE del PCB
+  (piano di appoggio dei distanziali). x avanti (verso le lenti), y sinistra,
+  z su (serigrafia dritta vista di fronte, USB-C in basso).
+  Fori di fissaggio in questo frame: x=0, y=+-0.030, z=+-0.012.
+
+  STIME, non quotate nel disegno:
+    lens_x  : posizione del centro di proiezione lungo l'asse ottico
+              (default 14 mm = ~3.7 mm dietro il fronte lente, incertezza ~+-4 mm)
+    lens_z  : 0, lenti centrate in altezza (dedotto dalla simmetria del disegno)
+    usb_back: sporgenza del connettore USB-C dietro il PCB (~3.5 mm)
+-->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="ar0144_stereo" params="prefix parent *origin
+                                            lens_x:=0.014 lens_z:=0.0
+                                            baseline:=0.052 usb_back:=0.0035
+                                            mesh:=package://ar0144_stereo_description/meshes/ar0144_stereo.stl">
+
+    <xacro:property name="depth"   value="0.01772"/>
+    <xacro:property name="width"   value="0.066"/>
+    <xacro:property name="height"  value="0.030"/>
+    <xacro:property name="pcb_t"   value="0.0016"/>
+    <xacro:property name="m"       value="0.015"/>
+
+    <joint name="${prefix}stereo_mount_joint" type="fixed">
+      <parent link="${parent}"/>
+      <child link="${prefix}stereo_link"/>
+      <xacro:insert_block name="origin"/>
+    </joint>
+
+    <link name="${prefix}stereo_link">
+      <!-- Mesh semplificata: corpo 9.1 x 66 x 30 mm + due cilindri D14.
+           STL in metri, stessa origine di questo link. -->
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry><mesh filename="${mesh}"/></geometry>
+        <material name="ar0144_black"><color rgba="0.1 0.1 0.1 1.0"/></material>
+      </visual>
+
+      <!-- Ingombro unico: dal connettore USB-C (dietro) al fronte lente -->
+      <collision>
+        <origin xyz="${(depth - usb_back)/2} 0 0" rpy="0 0 0"/>
+        <geometry><box size="${depth + usb_back} ${width} ${height}"/></geometry>
+      </collision>
+
+      <inertial>
+        <origin xyz="${depth/2} 0 0" rpy="0 0 0"/>
+        <mass value="${m}"/>
+        <inertia ixx="${m/12*(width*width+height*height)}" ixy="0" ixz="0"
+                 iyy="${m/12*(depth*depth+height*height)}" iyz="0"
+                 izz="${m/12*(depth*depth+width*width)}"/>
+      </inertial>
+    </link>
+
+    <!-- Camere: left a +y, right a -y -->
+    <joint name="${prefix}stereo_left_joint" type="fixed">
+      <parent link="${prefix}stereo_link"/>
+      <child link="${prefix}stereo_left_link"/>
+      <origin xyz="${lens_x} ${baseline/2} ${lens_z}" rpy="0 0 0"/>
+    </joint>
+    <link name="${prefix}stereo_left_link"/>
+
+    <joint name="${prefix}stereo_right_joint" type="fixed">
+      <parent link="${prefix}stereo_link"/>
+      <child link="${prefix}stereo_right_link"/>
+      <origin xyz="${lens_x} ${-baseline/2} ${lens_z}" rpy="0 0 0"/>
+    </joint>
+    <link name="${prefix}stereo_right_link"/>
+
+    <!-- Frame ottici REP-103: z avanti, x destra, y giu' -->
+    <joint name="${prefix}stereo_left_optical_joint" type="fixed">
+      <parent link="${prefix}stereo_left_link"/>
+      <child link="${prefix}stereo_left_optical_frame"/>
+      <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+    </joint>
+    <link name="${prefix}stereo_left_optical_frame"/>
+
+    <joint name="${prefix}stereo_right_optical_joint" type="fixed">
+      <parent link="${prefix}stereo_right_link"/>
+      <child link="${prefix}stereo_right_optical_frame"/>
+      <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+    </joint>
+    <link name="${prefix}stereo_right_optical_frame"/>
+
+  </xacro:macro>
+
+</robot>
