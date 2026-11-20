@@ -28,7 +28,7 @@
   <xacro:macro name="ar0144_stereo" params="prefix parent *origin
                                             lens_x:=0.014 lens_z:=0.0
                                             baseline:=0.052 usb_back:=0.0035
-                                            mesh:=package://ar0144_stereo_description/meshes/ar0144_stereo.stl">
+                                            mesh:=package://ar0144_stereo_description/meshes/AR0144_stereo.stl">
 
     <xacro:property name="depth"   value="0.01772"/>
     <xacro:property name="width"   value="0.066"/>
